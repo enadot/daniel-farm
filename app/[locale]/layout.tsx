@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Heebo, Inter } from 'next/font/google';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
@@ -9,19 +8,12 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
 
-const heebo = Heebo({
-  subsets: ['hebrew', 'latin'],
-  weight: ['300', '400', '500', '700'],
-  variable: '--font-heebo',
-  display: 'swap',
-});
-
-const inter = Inter({
-  subsets: ['latin', 'cyrillic'],
-  weight: ['300', '400', '500', '700'],
-  variable: '--font-inter',
-  display: 'swap',
-});
+const GOOGLE_FONTS_URL =
+  'https://fonts.googleapis.com/css2' +
+  '?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700' +
+  '&family=Heebo:wght@300;400;500;700' +
+  '&family=Inter:wght@300;400;500;700' +
+  '&display=swap';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -71,10 +63,18 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
   const direction = locale === 'he' ? 'rtl' : 'ltr';
-  const fontClass = locale === 'he' ? heebo.variable : inter.variable;
 
   return (
-    <html lang={locale} dir={direction} className={fontClass}>
+    <html lang={locale} dir={direction}>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link href={GOOGLE_FONTS_URL} rel="stylesheet" />
+      </head>
       <body>
         <NextIntlClientProvider messages={messages}>
           <Header />

@@ -18,10 +18,20 @@ html {
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-heebo), var(--font-inter), system-ui, -apple-system, sans-serif;
+  font-family: 'Google Sans', 'Heebo', 'Inter', system-ui, -apple-system, sans-serif;
+  font-optical-sizing: auto;
+  font-variation-settings: 'GRAD' 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.7;
+}
+
+html[lang='he'] body {
+  font-family: 'Heebo', 'Google Sans', system-ui, -apple-system, sans-serif;
+}
+
+html[lang='ru'] body {
+  font-family: 'Google Sans', 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
