@@ -12,14 +12,13 @@
 }
 
 html {
-  direction: rtl;
   scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: var(--font-heebo), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-heebo), var(--font-inter), system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.7;

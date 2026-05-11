@@ -1,14 +1,17 @@
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 type CTASectionProps = {
   title?: string;
   description?: string;
 };
 
-export default function CTASection({
-  title = 'נשמח לעמוד לרשותכם בכל שעה',
-  description = 'אנו כאן כדי להקל עליכם בזמן הקשה הזה. צרו קשר בווטסאפ או בטלפון, ונלווה אתכם בכבוד ובאהבה.',
-}: CTASectionProps) {
+export default function CTASection({ title, description }: CTASectionProps) {
+  const t = useTranslations('cta');
+  const tCommon = useTranslations('common');
+  const resolvedTitle = title ?? t('title');
+  const resolvedDescription = description ?? t('description');
+
   return (
     <section
       className="section-padding bg-primary-dark text-white relative overflow-hidden"
@@ -24,10 +27,10 @@ export default function CTASection({
       />
       <div className="relative container-content text-center">
         <h2 id="cta-title" className="heading-lg text-white mb-4">
-          {title}
+          {resolvedTitle}
         </h2>
         <p className="text-lg text-primary-light/95 max-w-2xl mx-auto mb-8 leading-relaxed">
-          {description}
+          {resolvedDescription}
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <a
@@ -35,24 +38,24 @@ export default function CTASection({
             target="_blank"
             rel="noopener noreferrer"
             className="btn-whatsapp text-lg !py-4 !px-8"
-            aria-label="שלחו לנו ווטסאפ"
+            aria-label={t('whatsappAria')}
           >
             <span aria-hidden="true">💬</span>
-            שלחו ווטסאפ
+            {tCommon('whatsappCta')}
           </a>
           <a
             href="tel:0523288557"
             className="btn-secondary text-lg !py-4 !px-8"
-            aria-label="התקשרו אלינו"
+            aria-label={t('callAria')}
           >
             <span aria-hidden="true">📞</span>
-            052-3288557
+            <span dir="ltr">{tCommon('phone')}</span>
           </a>
           <Link
             href="/contact"
             className="text-white underline underline-offset-4 hover:text-primary-light transition-colors"
           >
-            או מלאו טופס יצירת קשר
+            {t('formLink')}
           </Link>
         </div>
       </div>

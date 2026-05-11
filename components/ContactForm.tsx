@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { useTranslations } from 'next-intl';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -8,6 +9,7 @@ const FORMSPREE_ENDPOINT =
   process.env.NEXT_PUBLIC_FORMSPREE_ENDPOINT || 'https://formspree.io/f/yourFormId';
 
 export default function ContactForm() {
+  const t = useTranslations('contact.form');
   const [status, setStatus] = useState<Status>('idle');
   const [errorMsg, setErrorMsg] = useState('');
 
@@ -31,11 +33,11 @@ export default function ContactForm() {
         form.reset();
       } else {
         const json = await res.json().catch(() => ({}));
-        setErrorMsg(json?.error || 'אירעה שגיאה בשליחה. אנא נסו שוב.');
+        setErrorMsg(json?.error || t('errorGeneric'));
         setStatus('error');
       }
     } catch {
-      setErrorMsg('בעיה בחיבור לרשת. אנא נסו שוב או צרו קשר טלפוני.');
+      setErrorMsg(t('errorNetwork'));
       setStatus('error');
     }
   }
@@ -43,20 +45,19 @@ export default function ContactForm() {
   if (status === 'success') {
     return (
       <div
-        className="card border-r-4 border-primary"
+        className="card border-s-4 border-primary"
         role="status"
         aria-live="polite"
       >
         <div className="flex items-start gap-3">
-          <span className="text-3xl" aria-hidden="true">✓</span>
+          <span className="text-3xl" aria-hidden="true">
+            ✓
+          </span>
           <div>
             <h3 className="text-xl font-bold text-primary-dark mb-2">
-              תודה רבה — קיבלנו את ההודעה שלכם
+              {t('successTitle')}
             </h3>
-            <p className="text-text/80 leading-relaxed">
-              נחזור אליכם בהקדם האפשרי. אם זה דחוף, אתם תמיד מוזמנים
-              להתקשר ישירות ל-052-3288557 או לשלוח ווטסאפ.
-            </p>
+            <p className="text-text/80 leading-relaxed">{t('successDesc')}</p>
           </div>
         </div>
       </div>
@@ -67,12 +68,15 @@ export default function ContactForm() {
     <form
       onSubmit={handleSubmit}
       className="card space-y-5"
-      aria-label="טופס יצירת קשר"
+      aria-label={t('ariaLabel')}
       noValidate
     >
       <div>
         <label htmlFor="name" className="block text-sm font-medium mb-2">
-          שם מלא <span className="text-red-600" aria-hidden="true">*</span>
+          {t('name')}{' '}
+          <span className="text-red-600" aria-hidden="true">
+            *
+          </span>
         </label>
         <input
           id="name"
@@ -86,7 +90,10 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="phone" className="block text-sm font-medium mb-2">
-          טלפון <span className="text-red-600" aria-hidden="true">*</span>
+          {t('phone')}{' '}
+          <span className="text-red-600" aria-hidden="true">
+            *
+          </span>
         </label>
         <input
           id="phone"
@@ -101,7 +108,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="pet-type" className="block text-sm font-medium mb-2">
-          סוג החיה
+          {t('petType')}
         </label>
         <select
           id="pet-type"
@@ -109,27 +116,29 @@ export default function ContactForm() {
           defaultValue=""
           className="w-full px-4 py-3 rounded-soft border border-primary-light bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition"
         >
-          <option value="" disabled>בחרו סוג חיה</option>
-          <option value="כלב">כלב</option>
-          <option value="חתול">חתול</option>
-          <option value="ארנב">ארנב</option>
-          <option value="ציפור">ציפור</option>
-          <option value="זוחל">זוחל</option>
-          <option value="מכרסם">מכרסם</option>
-          <option value="אחר">אחר</option>
+          <option value="" disabled>
+            {t('petOptions.select')}
+          </option>
+          <option value="dog">{t('petOptions.dog')}</option>
+          <option value="cat">{t('petOptions.cat')}</option>
+          <option value="rabbit">{t('petOptions.rabbit')}</option>
+          <option value="bird">{t('petOptions.bird')}</option>
+          <option value="reptile">{t('petOptions.reptile')}</option>
+          <option value="rodent">{t('petOptions.rodent')}</option>
+          <option value="other">{t('petOptions.other')}</option>
         </select>
       </div>
 
       <div>
         <label htmlFor="message" className="block text-sm font-medium mb-2">
-          הודעה
+          {t('message')}
         </label>
         <textarea
           id="message"
           name="message"
           rows={4}
           className="w-full px-4 py-3 rounded-soft border border-primary-light bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition resize-y"
-          placeholder="ספרו לנו במה תוכל לסייע..."
+          placeholder={t('messagePlaceholder')}
         />
       </div>
 
@@ -147,13 +156,10 @@ export default function ContactForm() {
         disabled={status === 'submitting'}
         className="btn-primary w-full disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        {status === 'submitting' ? 'שולח...' : 'שליחת הודעה'}
+        {status === 'submitting' ? t('submitting') : t('submit')}
       </button>
 
-      <p className="text-xs text-text/60 leading-relaxed">
-        בלחיצה על "שליחת הודעה" אתם מסכימים שניצור עמכם קשר. הפרטים שלכם
-        נשמרים בדיסקרטיות מלאה ולא יועברו לצד שלישי.
-      </p>
+      <p className="text-xs text-text/60 leading-relaxed">{t('consent')}</p>
     </form>
   );
 }

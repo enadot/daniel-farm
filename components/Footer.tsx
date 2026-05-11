@@ -1,45 +1,81 @@
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export default function Footer() {
   const year = new Date().getFullYear();
+  const t = useTranslations('footer');
+  const tNav = useTranslations('nav');
+  const tSite = useTranslations('site');
 
   return (
     <footer
       className="bg-primary-dark text-white mt-20"
       role="contentinfo"
-      aria-label="כותרת תחתונה"
+      aria-label={t('aria')}
     >
       <div className="container-content py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <div className="flex items-center gap-2 text-xl font-bold mb-4 text-white">
               <span aria-hidden="true">🌿</span>
-              <span>חוות דניאל</span>
+              <span>{tSite('name')}</span>
             </div>
             <p className="text-primary-light/90 text-sm leading-relaxed">
-              בית הקברות הראשון לחיות מחמד בישראל. מאז 1973, אנו מלווים
-              משפחות בפרידה מבעלי החיים האהובים שלהן בכבוד ובאהבה.
+              {t('tagline')}
             </p>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold mb-4 text-white">ניווט</h2>
+            <h2 className="text-lg font-bold mb-4 text-white">
+              {t('navHeading')}
+            </h2>
             <ul className="space-y-2 text-primary-light/90 text-sm">
-              <li><Link href="/" className="hover:text-white">דף הבית</Link></li>
-              <li><Link href="/services" className="hover:text-white">השירותים שלנו</Link></li>
-              <li><Link href="/sections" className="hover:text-white">חלקות הקבורה</Link></li>
-              <li><Link href="/gallery" className="hover:text-white">גלריה</Link></li>
-              <li><Link href="/about" className="hover:text-white">אודות</Link></li>
-              <li><Link href="/contact" className="hover:text-white">צור קשר</Link></li>
+              <li>
+                <Link href="/" className="hover:text-white">
+                  {tNav('home')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="hover:text-white">
+                  {tNav('services')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/sections" className="hover:text-white">
+                  {tNav('sections')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/gallery" className="hover:text-white">
+                  {tNav('gallery')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-white">
+                  {tNav('about')}
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-white">
+                  {tNav('contact')}
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold mb-4 text-white">צרו קשר</h2>
+            <h2 className="text-lg font-bold mb-4 text-white">
+              {t('contactHeading')}
+            </h2>
             <ul className="space-y-3 text-primary-light/90 text-sm">
               <li className="flex items-start gap-2">
                 <span aria-hidden="true">📞</span>
-                <a href="tel:0523288557" className="hover:text-white" aria-label="התקשרו אלינו">
+                <a
+                  href="tel:0523288557"
+                  className="hover:text-white"
+                  aria-label={t('callAria')}
+                  dir="ltr"
+                >
                   052-3288557
                 </a>
               </li>
@@ -50,46 +86,49 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white"
-                  aria-label="שלחו ווטסאפ"
+                  aria-label={t('whatsappAria')}
                 >
-                  שליחת ווטסאפ
+                  {t('whatsappLink')}
                 </a>
               </li>
               <li className="flex items-start gap-2">
                 <span aria-hidden="true">📍</span>
-                <span>ליד תל השומר, גוש דן</span>
+                <span>{t('location')}</span>
               </li>
               <li className="flex items-start gap-2">
                 <span aria-hidden="true">🕐</span>
-                <span>ביקורים בתיאום טלפוני בלבד</span>
+                <span>{t('visits')}</span>
               </li>
             </ul>
           </div>
 
           <div>
-            <h2 className="text-lg font-bold mb-4 text-white">מידע נוסף</h2>
+            <h2 className="text-lg font-bold mb-4 text-white">
+              {t('moreHeading')}
+            </h2>
             <ul className="space-y-2 text-primary-light/90 text-sm">
               <li>
                 <Link href="/accessibility" className="hover:text-white">
-                  הצהרת נגישות
+                  {t('accessibility')}
                 </Link>
               </li>
               <li>
                 <Link href="/about" className="hover:text-white">
-                  הסיפור שלנו
+                  {t('story')}
                 </Link>
               </li>
             </ul>
             <p className="mt-6 text-primary-light/70 text-xs leading-relaxed">
-              בעלים: דניאל שאול<br />
-              מתגורר בחווה — זמינים עבורכם
+              {t('owner')}
+              <br />
+              {t('availability')}
             </p>
           </div>
         </div>
 
         <div className="border-t border-white/10 mt-10 pt-6 text-center text-primary-light/70 text-sm">
-          <p>© {year} חוות דניאל — מנוחת החיות. כל הזכויות שמורות.</p>
-          <p className="mt-1 text-xs">פועלת ברציפות מאז 1973</p>
+          <p>{t('copyright', { year })}</p>
+          <p className="mt-1 text-xs">{t('since')}</p>
         </div>
       </div>
     </footer>

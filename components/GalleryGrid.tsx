@@ -1,40 +1,30 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
-const photos = [
-  {
-    src: '/images/gallery/photo-1.jpg',
-    title: 'מצבה חדשה בחלקה',
-    description: 'חלקה מטופחת עם דשא ירוק, נר זיכרון ועיטור מקבל פנים.',
-  },
-  {
-    src: '/images/gallery/photo-2.jpg',
-    title: 'מבט כללי על החלקה',
-    description: 'אווירה ירוקה ושקטה תחת עצים ובין פרחים.',
-  },
-  {
-    src: '/images/gallery/photo-3.jpg',
-    title: 'אור הזריחה בחווה',
-    description: 'אור רך וחם פורש שלווה על המצבות לעת בוקר.',
-  },
-  {
-    src: '/images/gallery/photo-4.jpg',
-    title: 'מצבות זיכרון אישיות',
-    description: 'מצבות בחריטת תמונה וטקסט אישי לזכר אהובים.',
-  },
-  {
-    src: '/images/gallery/photo-5.jpg',
-    title: 'מצבה לזכר חיית מחמד',
-    description: 'מצבת שיש מעוצבת עם תמונה וכיתוב אישי.',
-  },
-];
+const photoKeys = ['p1', 'p2', 'p3', 'p4', 'p5'] as const;
+const photoSources: Record<(typeof photoKeys)[number], string> = {
+  p1: '/images/gallery/photo-1.jpg',
+  p2: '/images/gallery/photo-2.jpg',
+  p3: '/images/gallery/photo-3.jpg',
+  p4: '/images/gallery/photo-4.jpg',
+  p5: '/images/gallery/photo-5.jpg',
+};
 
 export default function GalleryGrid() {
+  const t = useTranslations('gallery.photos');
+  const tCommon = useTranslations('common');
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
+
+  const photos = photoKeys.map((key) => ({
+    src: photoSources[key],
+    title: t(`${key}.title`),
+    description: t(`${key}.description`),
+  }));
 
   const slides = photos.map((p) => ({
     src: p.src,
@@ -55,7 +45,7 @@ export default function GalleryGrid() {
               setOpen(true);
             }}
             className="group relative aspect-[4/3] rounded-card overflow-hidden shadow-soft hover:shadow-soft-lg transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-primary/30 bg-primary-dark"
-            aria-label={`הגדל תמונה: ${item.title}`}
+            aria-label={tCommon('enlargeImage', { title: item.title })}
           >
             <img
               src={item.src}
@@ -76,7 +66,7 @@ export default function GalleryGrid() {
                 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-primary-dark px-4 py-2 rounded-soft font-medium"
                 aria-hidden="true"
               >
-                הצג תמונה
+                {tCommon('viewImage')}
               </span>
             </div>
           </button>

@@ -4,6 +4,7 @@ type SectionCardProps = {
   description: string;
   features: string[];
   emoji: string;
+  includedLabel: string;
 };
 
 export default function SectionCard({
@@ -12,6 +13,7 @@ export default function SectionCard({
   description,
   features,
   emoji,
+  includedLabel,
 }: SectionCardProps) {
   return (
     <article className="card flex flex-col h-full">
@@ -29,11 +31,16 @@ export default function SectionCard({
       </div>
       <p className="text-text/80 leading-relaxed mb-5">{description}</p>
       <div className="mt-auto">
-        <h4 className="text-sm font-bold text-primary-dark mb-2">מה כלול:</h4>
+        <h4 className="text-sm font-bold text-primary-dark mb-2">{includedLabel}</h4>
         <ul className="space-y-2">
           {features.map((feature) => (
-            <li key={feature} className="flex items-start gap-2 text-sm text-text/80">
-              <span className="text-primary mt-1" aria-hidden="true">✓</span>
+            <li
+              key={feature}
+              className="flex items-start gap-2 text-sm text-text/80"
+            >
+              <span className="text-primary mt-1" aria-hidden="true">
+                ✓
+              </span>
               <span>{feature}</span>
             </li>
           ))}

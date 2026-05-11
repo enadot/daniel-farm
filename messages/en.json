@@ -1,0 +1,514 @@
+{
+  "site": {
+    "name": "Chavat Daniel",
+    "fullName": "Chavat Daniel — Pet Memorial",
+    "shortName": "Pet Memorial",
+    "tagline": "Operating continuously since 1973"
+  },
+  "languages": {
+    "label": "Language",
+    "he": "עברית",
+    "en": "English",
+    "ru": "Русский"
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Our Services",
+    "sections": "Burial Sections",
+    "gallery": "Gallery",
+    "about": "About",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "skipToContent": "Skip to main content",
+    "mainMenu": "Main menu",
+    "mobileMenu": "Mobile menu",
+    "homeAriaLabel": "Chavat Daniel — Home",
+    "callAriaLabel": "Call us: 052-3288557"
+  },
+  "footer": {
+    "aria": "Footer",
+    "tagline": "Israel's first pet cemetery. Since 1973, we have walked with families through the loss of their beloved animals — with dignity and love.",
+    "navHeading": "Navigation",
+    "contactHeading": "Contact",
+    "moreHeading": "More information",
+    "whatsappLink": "Send WhatsApp",
+    "location": "Near Tel HaShomer, Gush Dan",
+    "visits": "Visits by phone appointment only",
+    "accessibility": "Accessibility statement",
+    "story": "Our story",
+    "owner": "Owner: Daniel Shaul",
+    "availability": "Lives on site — available for you",
+    "copyright": "© {year} Chavat Daniel — Pet Memorial. All rights reserved.",
+    "since": "Operating continuously since 1973",
+    "whatsappAria": "Send WhatsApp",
+    "callAria": "Call us"
+  },
+  "common": {
+    "phone": "052-3288557",
+    "whatsappCta": "Send WhatsApp",
+    "callCta": "Call",
+    "contactCta": "Contact us now",
+    "moreLink": "Learn more",
+    "back": "Back",
+    "loading": "Loading...",
+    "viewImage": "View image",
+    "enlargeImage": "Enlarge image: {title}",
+    "next": "Next",
+    "prev": "Previous"
+  },
+  "trustBar": {
+    "aria": "Values and benefits",
+    "years": "50+ years of experience",
+    "location": "Located in Gush Dan",
+    "available": "Available for you",
+    "personal": "Personal care for every family"
+  },
+  "cta": {
+    "title": "We are here for you, any time",
+    "description": "We are here to support you through this difficult time. Reach out by WhatsApp or phone, and we will accompany you with dignity and love.",
+    "whatsappAria": "Send us a WhatsApp message",
+    "callAria": "Call us",
+    "formLink": "Or fill out the contact form"
+  },
+  "whatsappButton": {
+    "ariaLabel": "Send a WhatsApp message to Chavat Daniel"
+  },
+  "home": {
+    "meta": {
+      "title": "Chavat Daniel — Pet Memorial | Pet Cemetery since 1973",
+      "description": "Israel's first pet cemetery, operating since 1973 near Tel HaShomer. Burial, cremation and headstones — with dignity and love. Contact: 052-3288557."
+    },
+    "hero": {
+      "badge": "Operating continuously since 1973 — the first of its kind in Israel",
+      "titleLine1": "A place of rest for animals —",
+      "titleLine2": "because every animal deserves a dignified farewell",
+      "subtitle": "Israel's first pet cemetery, operating since 1973 out of true love for animals. We walk with you respectfully, sensitively and with complete discretion.",
+      "ctaContact": "Contact us now",
+      "ctaServices": "Explore our services"
+    },
+    "services": {
+      "title": "Our services",
+      "subtitle": "A range of professional services under one roof, with personal and devoted accompaniment throughout.",
+      "viewAll": "See all services",
+      "items": {
+        "burial": {
+          "title": "Burial in a section",
+          "description": "A final resting place in the section of your choice, maintained and tended year round. Full accompaniment from the first call to the ceremony."
+        },
+        "cremation": {
+          "title": "Cremation services",
+          "description": "A dignified and professional process for your pet, with the option to receive the ashes in a personal urn or to scatter them on the farm."
+        },
+        "headstone": {
+          "title": "Custom headstone",
+          "description": "Personally designed headstones with engraving, photo and text of your choice. A variety of options in marble, granite and more."
+        },
+        "transport": {
+          "title": "Taxi pickup",
+          "description": "Pickup service from your home to the farm, with discreet and sensitive accompaniment. A real relief in difficult moments."
+        }
+      }
+    },
+    "whyUs": {
+      "title": "Why choose Chavat Daniel?",
+      "p1": "For more than five decades, Chavat Daniel has been a real home to families who have lost a beloved pet. We founded this place in 1973 out of a deep understanding — a pet is not just an \"animal.\" It is a friend, a family member, and often the closest companion we have ever had.",
+      "p2": "We believe a dignified farewell holds enormous meaning in the process of grief and healing. That is why we offer a quiet, well-kept and respected place where you can come at any time to remember with love.",
+      "p3a": "Daniel lives on the farm",
+      "p3b": " — which means personal supervision, attention to detail, and continuous care for the place and the headstones. This is not a business — it is a calling.",
+      "stats": {
+        "yearsLabel": "Years of activity",
+        "yearsValue": "50+",
+        "foundedLabel": "Founded",
+        "foundedValue": "1973",
+        "availableLabel": "Available for you",
+        "availableValue": "✓",
+        "personalLabel": "Personal care",
+        "personalValue": "100%"
+      }
+    },
+    "sections": {
+      "title": "Our 4 sections",
+      "subtitle": "Each section was designed with care, with its own character and atmosphere — so you can choose the place that best fits the memory of your pet.",
+      "viewAll": "Detailed information about the sections",
+      "items": {
+        "marble": {
+          "title": "Marble columns section",
+          "description": "A dignified and quiet section with white marble headstones."
+        },
+        "silk": {
+          "title": "Silk flowers section",
+          "description": "A colorful, blooming atmosphere all year round."
+        },
+        "garden": {
+          "title": "Garden section",
+          "description": "Among tall trees, natural shade and greenery."
+        },
+        "premium": {
+          "title": "Premium section",
+          "description": "Our finest section — a special and honored place."
+        }
+      }
+    }
+  },
+  "services": {
+    "meta": {
+      "title": "Our services — Burial, cremation and pet headstones",
+      "description": "A range of services for your pet: burial in the section of your choice, cremation services, custom headstones, transport and a visitors' corner. Personal accompaniment and full availability for you."
+    },
+    "hero": {
+      "title": "Our services",
+      "subtitle": "A range of professional services under one roof — with personal, devoted and dignified accompaniment from the very first moment."
+    },
+    "items": {
+      "burial": {
+        "title": "Burial in the section of your choice",
+        "description": "At Chavat Daniel we offer four sections, each with its own character and atmosphere, so you can choose the place that best fits your pet's memory. The burial includes preparation of the site, a dignified ceremony and personal accompaniment throughout. We take care of every detail — from the burial certificate to the long-term care of the section."
+      },
+      "cremation": {
+        "title": "Cremation services",
+        "description": "The cremation is carried out with care and respect, with the option to receive the ashes personally in an urn of your choice, or to scatter them in one of the farm's sections. We provide an official certificate, and accompany you through every question and decision. All in complete discretion and with respect for the animal and the family."
+      },
+      "headstone": {
+        "title": "Custom headstone",
+        "description": "A headstone is not just a stone — it is a declaration of love. We offer a wide range of headstones in marble, granite and premium materials, with personal engraving of the pet's name, dates, photo and text of your choice. You can add symbols, illustrations or favorite quotes. Our team helps with design and accompanies you through to the final installation."
+      },
+      "transport": {
+        "title": "Taxi pickup",
+        "description": "We understand that the journey to the farm is not simple in these moments. That is why we offer a taxi pickup service from your home to the farm, with discreet and sensitive accompaniment. The service is arranged in advance, tailored to your needs, and lets you focus on what truly matters — the farewell."
+      },
+      "visitors": {
+        "title": "Visitors' corner",
+        "description": "The farm has a quiet and well-kept visitors' corner, which you can reach at any time after a phone appointment. It is a place for reflection, remembrance and calm. You can bring flowers, light a candle, and stay as long as you wish. Daniel lives on the farm and will welcome you personally."
+      },
+      "maintenance": {
+        "title": "Ongoing maintenance",
+        "description": "We give daily attention to the maintenance of the sections — cleaning, gardening, watering and caring for the headstones. Daniel lives on the farm and is there for you at all times — you can rest assured that your pet's resting place is preserved with dignity over the years."
+      }
+    },
+    "how": {
+      "title": "How does it work?",
+      "step1": {
+        "title": "First contact",
+        "desc": "Call or send a WhatsApp message. We will respond quickly, patiently, and understand together what you need."
+      },
+      "step2": {
+        "title": "Scheduling and choosing the service",
+        "desc": "We arrange a visit to the farm, or a pickup service if needed. Together we review the sections and options."
+      },
+      "step3": {
+        "title": "The ceremony and farewell",
+        "desc": "We accompany you in a personal and dignified farewell ceremony, at your pace and in the way that fits you best."
+      },
+      "step4": {
+        "title": "Headstone installation (if desired)",
+        "desc": "If you have chosen a headstone, we design the text and photo together and install it within a short time."
+      },
+      "step5": {
+        "title": "Accompaniment over the years",
+        "desc": "You can visit at any time by appointment, and we take care of the ongoing maintenance of the place."
+      }
+    },
+    "ctaTitle": "Have a question? We are here",
+    "ctaDescription": "Every service is tailored personally — no two cases are the same. Contact us and we'll think together about what is right for you."
+  },
+  "sections": {
+    "meta": {
+      "title": "Burial sections — 4 sections to choose from at Chavat Daniel",
+      "description": "Chavat Daniel offers four unique pet burial sections: marble columns, silk flowers, garden and premium. Choose the atmosphere that suits you."
+    },
+    "hero": {
+      "title": "Burial sections",
+      "subtitle": "Four sections, four atmospheres. Each was thoughtfully designed — so you can choose the perfect place for your pet's memory."
+    },
+    "included": "What's included:",
+    "items": {
+      "marble": {
+        "title": "Marble columns section",
+        "atmosphere": "Dignified · Classic · Timeless",
+        "description": "An elegant section with prominent white marble headstones, offering a dignified and classic appearance. The section is carefully maintained, with designed paths and quiet seating corners. Suitable for those seeking a traditional, dignified resting place with presence.",
+        "features": [
+          "Quality white marble headstone",
+          "Personal engraving of name, dates and text",
+          "Option to add an engraved photo",
+          "Designed paths and easy access",
+          "Ongoing maintenance of the headstone and section"
+        ]
+      },
+      "silk": {
+        "title": "Silk flowers section",
+        "atmosphere": "Colorful · Vibrant · Hopeful",
+        "description": "A unique section where every headstone is decorated with colorful silk flowers that never wilt. The atmosphere is hopeful and blooming year-round — a constant reminder of love and life. Suitable for those who prefer to remember their beloved pet through joy and color, rather than mourning.",
+        "features": [
+          "Headstone with a permanent silk flower design",
+          "Personal choice of colors and combinations",
+          "Colorful appearance throughout the year",
+          "Flowers refreshed by our team",
+          "Personal engraving of the pet's details"
+        ]
+      },
+      "garden": {
+        "title": "Garden section",
+        "atmosphere": "Natural · Shaded · Peaceful",
+        "description": "A section located under tall, mature trees, with natural shade, abundant greenery and an almost forest-like atmosphere. The place is especially quiet, and you can hear birds at any time. Suitable for those who loved nature, walks and the outdoors — dogs and animals that loved the green.",
+        "features": [
+          "Shaded location among mature trees",
+          "Natural vegetation around the headstone",
+          "Headstone integrated into the green landscape",
+          "Natural seating corners",
+          "An especially quiet environment"
+        ]
+      },
+      "premium": {
+        "title": "Premium section",
+        "atmosphere": "Premium · Special · Exclusive",
+        "description": "The farm's premium section — an exclusive place reserved for pets who held a special place in the family's heart. The section is larger, with more elaborate headstones, central location and increased privacy. Every detail is designed with care to provide the ultimate honor.",
+        "features": [
+          "Wider section with increased privacy",
+          "Elaborate and premium headstone",
+          "Personalized design options",
+          "Central and prominent location",
+          "Maintenance at the highest level"
+        ]
+      }
+    },
+    "choice": {
+      "title": "Not sure which section to choose?",
+      "description": "That's perfectly fine — this is a very personal decision, and there is no single right answer. We invite you to visit the farm (by prior appointment), get a feel for the place, and let us accompany you through the choice. You can also consult with us by phone, and we'll present the options with your needs and budget in mind.",
+      "cta": "Talk to us on WhatsApp"
+    }
+  },
+  "gallery": {
+    "meta": {
+      "title": "Gallery — photos from Chavat Daniel",
+      "description": "A photo gallery from Chavat Daniel — the sections, the headstones, the nature and the atmosphere. A glimpse of the quiet and dignified place where we accompany you."
+    },
+    "hero": {
+      "title": "Gallery",
+      "subtitle": "A glimpse of the place — the sections, the nature, and the quiet, dignified atmosphere of Chavat Daniel."
+    },
+    "intro": "A real glimpse of the farm — headstones, sections and the green, peaceful atmosphere. Click any image to enlarge. You're also welcome to schedule a personal visit and see the place in person.",
+    "aria": "Photo gallery",
+    "photos": {
+      "p1": {
+        "title": "New headstone in the section",
+        "description": "A well-kept plot with green turf, a memorial candle and a welcoming ornament."
+      },
+      "p2": {
+        "title": "General view of the section",
+        "description": "A green and peaceful atmosphere under trees and among flowers."
+      },
+      "p3": {
+        "title": "Sunrise light on the farm",
+        "description": "Soft, warm light spreads calm over the headstones in the morning."
+      },
+      "p4": {
+        "title": "Personal memorial headstones",
+        "description": "Headstones engraved with photos and personal text in memory of loved ones."
+      },
+      "p5": {
+        "title": "Headstone for a beloved pet",
+        "description": "A designed marble headstone with a photo and personal inscription."
+      }
+    },
+    "ctaTitle": "Want to see the place yourself?",
+    "ctaDescription": "Schedule a visit by phone, and we'll be glad to show you the farm in person."
+  },
+  "about": {
+    "meta": {
+      "title": "About Chavat Daniel — the story of Daniel Shaul since 1973",
+      "description": "The story of Chavat Daniel and its owner Daniel Shaul. Israel's first pet cemetery, operating continuously since 1973 out of love for animals."
+    },
+    "hero": {
+      "title": "Our story",
+      "subtitle": "50+ years of activity, thousands of families, countless memories full of love. Meet Chavat Daniel and the person behind the place."
+    },
+    "story": {
+      "title": "Daniel Shaul — the person behind the place",
+      "p1": "In 1973, when almost no one in Israel spoke of a \"dignified farewell to a pet,\" Daniel Shaul saw things differently. He grew up surrounded by animals, loved them with all his heart, and knew firsthand the pain of losing a loyal friend. He could not understand why families did not have a simple, dignified way to lay their beloved animal to rest.",
+      "p2": "So he did something simple but revolutionary: he founded Israel's first pet cemetery. Without shame, without apology. A place where the dignity a beloved animal deserves would not depend on anyone else.",
+      "p3": "Fifty years later, the farm continues to operate without interruption. The name has changed, the place has grown, but the heart is the same heart. Daniel still lives on the farm, still answers the phone himself, still makes sure every headstone is cared for and every family receives the treatment it deserves.",
+      "quote": "For me this is not a business. It is a calling. Every animal that came here was everything in the world to someone — and I see it as my role to honor that love.",
+      "quoteAttribution": "— Daniel Shaul, founder of Chavat Daniel",
+      "p4a": "Daniel lives on the farm",
+      "p4b": " — this is not a marketing line. It means there is no hour when the place is unsupervised. It means that if you call at 10pm because something has happened, someone will answer. It means the headstones are cared for, the gardens are clean, and everything receives daily attention — not only when convenient."
+    },
+    "values": {
+      "title": "The values that guide us",
+      "items": {
+        "love": {
+          "title": "Love for animals",
+          "desc": "This is the core of who we are. Every action in this place comes from true, deep love — never from manipulation."
+        },
+        "personal": {
+          "title": "A personal approach",
+          "desc": "No two cases are alike. Every family receives tailored, patient and respectful accompaniment — at their own pace."
+        },
+        "professional": {
+          "title": "Uncompromising professionalism",
+          "desc": "An orderly process, quality headstones, ongoing maintenance. We take this seriously because it deserves to be taken seriously."
+        },
+        "discreet": {
+          "title": "Discretion",
+          "desc": "Every inquiry is personal and confidential. We respect the sensitivity of these moments."
+        }
+      }
+    },
+    "timeline": {
+      "title": "Timeline",
+      "items": {
+        "founded": {
+          "year": "1973",
+          "title": "Founding of the farm",
+          "desc": "Daniel Shaul founded Israel's first pet cemetery, out of an understanding that beloved animals also deserve a dignified farewell."
+        },
+        "expansion": {
+          "year": "1980—1990",
+          "title": "Expanding the sections",
+          "desc": "New sections were added and adapted to different styles, to give families more options to choose from."
+        },
+        "crematorium": {
+          "year": "2000",
+          "title": "Adding cremation",
+          "desc": "Modern cremation facilities were built, allowing us to accompany families in this way as well."
+        },
+        "modern": {
+          "year": "2010—today",
+          "title": "A new generation and technology",
+          "desc": "Modern communication tools, WhatsApp and pickup services — to make things easier for families at every stage."
+        },
+        "today": {
+          "year": "Today",
+          "title": "50+ years of activity",
+          "desc": "We have accompanied thousands of families over the years. Daniel continues to live on the farm and is always there for you, with ongoing personal supervision."
+        }
+      }
+    },
+    "ctaTitle": "Join the thousands of families we have accompanied",
+    "ctaDescription": "If you need support, we are here. Feel free to reach out at any time."
+  },
+  "contact": {
+    "meta": {
+      "title": "Contact — Chavat Daniel Pet Memorial",
+      "description": "Contact Chavat Daniel. Phone/WhatsApp: 052-3288557. Located near Tel HaShomer, Gush Dan. Visits by phone appointment."
+    },
+    "hero": {
+      "title": "Contact us",
+      "subtitle": "We are here for you at any time. The fastest way is by WhatsApp or phone — we'll respond quickly, patiently and discreetly."
+    },
+    "options": {
+      "srTitle": "Ways to reach us",
+      "whatsapp": {
+        "title": "WhatsApp",
+        "desc": "The fastest. We'll respond quickly.",
+        "cta": "Tap to send a message"
+      },
+      "phone": {
+        "title": "Phone",
+        "desc": "Speak directly with Daniel."
+      },
+      "location": {
+        "title": "Location",
+        "desc": "Near Tel HaShomer, Gush Dan",
+        "note": "Visits by phone appointment"
+      }
+    },
+    "form": {
+      "title": "Send us a message",
+      "intro": "Prefer to write? Fill out the form and we will get back to you soon. Every inquiry is kept fully confidential.",
+      "ariaLabel": "Contact form",
+      "name": "Full name",
+      "phone": "Phone",
+      "petType": "Pet type",
+      "message": "Message",
+      "messagePlaceholder": "Tell us how we can help...",
+      "petOptions": {
+        "select": "Choose pet type",
+        "dog": "Dog",
+        "cat": "Cat",
+        "rabbit": "Rabbit",
+        "bird": "Bird",
+        "reptile": "Reptile",
+        "rodent": "Rodent",
+        "other": "Other"
+      },
+      "submit": "Send message",
+      "submitting": "Sending...",
+      "consent": "By clicking \"Send message\" you agree that we may contact you. Your details are kept in full confidentiality and will not be shared with third parties.",
+      "successTitle": "Thank you — we received your message",
+      "successDesc": "We will get back to you as soon as possible. If this is urgent, you are always welcome to call us directly at 052-3288557 or send a WhatsApp message.",
+      "errorGeneric": "An error occurred while sending. Please try again.",
+      "errorNetwork": "Network connection issue. Please try again or contact us by phone."
+    },
+    "directions": {
+      "title": "How to get here",
+      "desc": "The farm is located in the Tel HaShomer area of Gush Dan. The exact address is provided when scheduling a visit. You can also order a taxi pickup service from home.",
+      "mapAria": "Map of the farm location",
+      "mapTitle": "Map of the Tel HaShomer area — Chavat Daniel"
+    },
+    "hours": {
+      "title": "Hours",
+      "phone": "Phone:",
+      "phoneValue": "Available for you — Daniel lives on the farm",
+      "visits": "Farm visits:",
+      "visitsValue": "By phone appointment only",
+      "transport": "Pickup service:",
+      "transportValue": "Available by prior arrangement"
+    }
+  },
+  "accessibility": {
+    "meta": {
+      "title": "Accessibility statement — Chavat Daniel",
+      "description": "The accessibility statement for the Chavat Daniel website. We are committed to making the site accessible to all users, including people with disabilities."
+    },
+    "hero": {
+      "title": "Accessibility statement",
+      "subtitle": "Chavat Daniel is committed to making the website and services accessible to every person, regardless of disability."
+    },
+    "srTitle": "Accessibility statement content",
+    "updated": "Last updated: {date}",
+    "general": {
+      "title": "General",
+      "body": "Chavat Daniel — Pet Memorial places the highest importance on making its website and services accessible to people with disabilities, and works to comply with the Equal Rights for People with Disabilities Regulations (Service Accessibility Adjustments), 5773—2013, and with Israeli Standard 5568 at level AA."
+    },
+    "features": {
+      "title": "Accessibility features on the site",
+      "items": [
+        "The site conforms to WCAG 2.1 level AA, as much as possible.",
+        "The site is built with full support for Hebrew RTL direction and keyboard navigation.",
+        "You can skip directly to the main content via the \"Skip to main content\" link shown when in keyboard focus.",
+        "All images on the site include alternative text (alt) describing the content.",
+        "Region names, buttons and links are labeled with aria-label in Hebrew.",
+        "High color contrast between text and background.",
+        "Font sizes can be enlarged in the browser without breaking the layout.",
+        "The site is responsive and adapted for mobile, tablet and desktop.",
+        "Forms include clear labels and accessible error messages.",
+        "There is no content based on rapid flashes (which may cause seizures)."
+      ]
+    },
+    "browsers": {
+      "title": "Usage recommendations",
+      "intro": "For an optimal browsing experience, we recommend using the latest versions of the following browsers:"
+    },
+    "exclusions": {
+      "title": "Exclusions",
+      "body": "The site may contain elements or pages that are not yet fully accessible, or that do not support certain assistive technologies. We work continuously to improve accessibility on the site."
+    },
+    "contact": {
+      "title": "Accessibility contact",
+      "intro": "If you encountered an accessibility issue on the site, or if you have suggestions for improvement, we would be glad to hear from you. Our accessibility coordinator will be happy to help:",
+      "name": "Name:",
+      "nameValue": "Daniel Shaul",
+      "phone": "Phone:",
+      "whatsapp": "WhatsApp:",
+      "whatsappLink": "Send a message",
+      "footer": "We are committed to responding to accessibility requests within a reasonable time and to resolving them as quickly as possible."
+    }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The page may have been removed, or the link is incorrect. You can return to the home page or contact us.",
+    "home": "Back to home",
+    "contact": "Contact us"
+  }
+}

@@ -1,11 +1,16 @@
+'use client';
+
+import { useTranslations } from 'next-intl';
+
 export default function WhatsAppButton() {
+  const t = useTranslations('whatsappButton');
   return (
     <a
       href="https://wa.me/9720523288557"
       target="_blank"
       rel="noopener noreferrer"
-      aria-label="שליחת הודעת ווטסאפ לחוות דניאל"
-      className="fixed bottom-6 left-6 z-50 flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366] text-white shadow-soft-lg hover:bg-[#1DA851] transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
+      aria-label={t('ariaLabel')}
+      className="fixed bottom-6 start-6 z-50 flex items-center justify-center w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#25D366] text-white shadow-soft-lg hover:bg-[#1DA851] transition-all duration-200 hover:scale-110 focus:outline-none focus:ring-4 focus:ring-[#25D366]/40"
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
