@@ -16,10 +16,11 @@ export default function Footer() {
       <div className="container-content py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
-            <div className="flex items-center gap-2 text-xl font-bold mb-4 text-white">
-              <span aria-hidden="true">🌿</span>
-              <span>{tSite('name')}</span>
-            </div>
+            <img
+              src="/images/logo.png"
+              alt={tSite('fullName')}
+              className="h-12 w-auto mb-4 bg-white/90 rounded-soft px-3 py-2"
+            />
             <p className="text-primary-light/90 text-sm leading-relaxed">
               {t('tagline')}
             </p>

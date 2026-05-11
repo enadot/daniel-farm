@@ -50,11 +50,14 @@ export default function Header() {
         <div className="flex items-center justify-between h-20 gap-2">
           <Link
             href="/"
-            className="flex items-center gap-2 text-xl md:text-2xl font-bold text-primary-dark"
+            className="flex items-center"
             aria-label={t('homeAriaLabel')}
           >
-            <span className="text-3xl" aria-hidden="true">🌿</span>
-            <span className="hidden sm:inline">{tSite('shortName')}</span>
+            <img
+              src="/images/logo.png"
+              alt={tSite('fullName')}
+              className="h-12 md:h-14 w-auto"
+            />
           </Link>
 
           <nav
