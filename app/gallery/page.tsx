@@ -21,8 +21,9 @@ export default function GalleryPage() {
       <section className="section-padding" aria-label="גלריית תמונות">
         <div className="container-content">
           <p className="text-center text-text/75 mb-10 max-w-2xl mx-auto leading-relaxed">
-            תמונות נוספות יועלו בקרוב. בינתיים, אם תרצו להתרשם — תוכלו
-            לתאם ביקור אישי בחווה ולראות את המקום במו עיניכם.
+            הצצה אמיתית לחווה — מצבות, חלקות והאווירה הירוקה והשקטה.
+            לחצו על כל תמונה להגדלה. תוכלו גם לתאם ביקור אישי
+            ולראות את המקום במו עיניכם.
           </p>
           <GalleryGrid />
         </div>
