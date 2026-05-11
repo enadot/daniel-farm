@@ -119,7 +119,7 @@ export default function ContactPage({
                 aria-label={t('directions.mapAria')}
               >
                 <iframe
-                  src="https://www.google.com/maps?q=Tel+Hashomer,+Israel&z=13&output=embed"
+                  src="https://www.google.com/maps?q=Moshav+Magshimim,+Israel&z=14&output=embed"
                   width="100%"
                   height="380"
                   style={{ border: 0 }}

@@ -33,7 +33,7 @@
     "contactHeading": "Contact",
     "moreHeading": "More information",
     "whatsappLink": "Send WhatsApp",
-    "location": "Near Tel HaShomer, Gush Dan",
+    "location": "Moshav Magshimim (near Savyon)",
     "visits": "Visits by phone appointment only",
     "accessibility": "Accessibility statement",
     "story": "Our story",
@@ -60,7 +60,7 @@
   "trustBar": {
     "aria": "Values and benefits",
     "years": "50+ years of experience",
-    "location": "Located in Gush Dan",
+    "location": "Moshav Magshimim, near Savyon",
     "available": "Available for you",
     "personal": "Personal care for every family"
   },
@@ -77,7 +77,7 @@
   "home": {
     "meta": {
       "title": "Chavat Daniel — Pet Memorial | Pet Cemetery since 1973",
-      "description": "Israel's first pet cemetery, operating since 1973 near Tel HaShomer. Burial, cremation and headstones — with dignity and love. Contact: 052-3288557."
+      "description": "Israel's first pet cemetery, operating since 1973 in Moshav Magshimim, near Savyon. Burial, cremation and headstones — with dignity and love. Contact: 052-3288557."
     },
     "hero": {
       "badge": "Operating continuously since 1973 — the first of its kind in Israel",
@@ -390,7 +390,7 @@
   "contact": {
     "meta": {
       "title": "Contact — Chavat Daniel Pet Memorial",
-      "description": "Contact Chavat Daniel. Phone/WhatsApp: 052-3288557. Located near Tel HaShomer, Gush Dan. Visits by phone appointment."
+      "description": "Contact Chavat Daniel. Phone/WhatsApp: 052-3288557. Located in Moshav Magshimim, near Savyon. Visits by phone appointment."
     },
     "hero": {
       "title": "Contact us",
@@ -409,7 +409,7 @@
       },
       "location": {
         "title": "Location",
-        "desc": "Near Tel HaShomer, Gush Dan",
+        "desc": "Moshav Magshimim, near Savyon",
         "note": "Visits by phone appointment"
       }
     },
@@ -442,9 +442,9 @@
     },
     "directions": {
       "title": "How to get here",
-      "desc": "The farm is located in the Tel HaShomer area of Gush Dan. The exact address is provided when scheduling a visit. You can also order a taxi pickup service from home.",
+      "desc": "The farm is located in Moshav Magshimim, near Savyon. The exact address is provided when scheduling a visit. You can also order a taxi pickup service from home.",
       "mapAria": "Map of the farm location",
-      "mapTitle": "Map of the Tel HaShomer area — Chavat Daniel"
+      "mapTitle": "Map of Moshav Magshimim — Chavat Daniel"
     },
     "hours": {
       "title": "Hours",
