@@ -185,7 +185,7 @@ export default function HomePage() {
               {[
                 { num: '50+', label: 'שנות פעילות' },
                 { num: '1973', label: 'שנת ייסוד' },
-                { num: '24/7', label: 'השגחה צמודה' },
+                { num: '✓', label: 'זמינים עבורכם' },
                 { num: '100%', label: 'יחס אישי' },
               ].map((stat) => (
                 <div

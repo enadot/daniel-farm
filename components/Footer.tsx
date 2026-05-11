@@ -82,7 +82,7 @@ export default function Footer() {
             </ul>
             <p className="mt-6 text-primary-light/70 text-xs leading-relaxed">
               בעלים: דניאל שאול<br />
-              מתגורר בחווה — השגחה צמודה 24/7
+              מתגורר בחווה — זמינים עבורכם
             </p>
           </div>
         </div>

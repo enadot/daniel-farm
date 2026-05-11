@@ -124,7 +124,7 @@ export default function ContactPage() {
                 </h3>
                 <ul className="space-y-2 text-text/80">
                   <li>
-                    <strong>מענה טלפוני:</strong> 24/7 — דניאל מתגורר בחווה
+                    <strong>מענה טלפוני:</strong> זמינים עבורכם — דניאל מתגורר בחווה
                   </li>
                   <li>
                     <strong>ביקורים בחווה:</strong> בתיאום טלפוני בלבד
