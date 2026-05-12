@@ -19,7 +19,6 @@ export async function generateMetadata({
 
 const serviceKeys = [
   'burial',
-  'cremation',
   'headstone',
   'transport',
   'visitors',
@@ -28,7 +27,6 @@ const serviceKeys = [
 
 const serviceIcons: Record<(typeof serviceKeys)[number], string> = {
   burial: '🌿',
-  cremation: '🕯️',
   headstone: '🪨',
   transport: '🚖',
   visitors: '🌷',

@@ -19,7 +19,6 @@ export async function generateMetadata({
 const timelineKeys = [
   'founded',
   'expansion',
-  'crematorium',
   'modern',
   'today',
 ] as const;
