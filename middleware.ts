@@ -4,5 +4,7 @@ import { routing } from './i18n/routing';
 export default createMiddleware(routing);
 
 export const config = {
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+  // Run i18n middleware on everything EXCEPT api, _next, _vercel, the
+  // admin panel, and files with extensions (images etc.).
+  matcher: ['/((?!api|_next|_vercel|admin|.*\\..*).*)'],
 };

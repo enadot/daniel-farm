@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@builder.io/sdk-react-nextjs": "^0.18.0",
+    "@vercel/kv": "^3.0.0",
     "next": "14.2.5",
     "next-intl": "^3.26.0",
     "react": "^18.3.1",
