@@ -145,8 +145,8 @@
           "description": "Among tall trees, natural shade and greenery."
         },
         "premium": {
-          "title": "Premium section",
-          "description": "Our finest section — a special and honored place."
+          "title": "Private section",
+          "description": "A quiet, personal section — an intimate place for remembrance."
         }
       }
     }
@@ -215,7 +215,7 @@
   "sections": {
     "meta": {
       "title": "Burial sections — 4 sections to choose from at Chavat Daniel",
-      "description": "Chavat Daniel offers four unique pet burial sections: marble columns, silk flowers, garden and premium. Choose the atmosphere that suits you."
+      "description": "Chavat Daniel offers four unique pet burial sections: marble columns, silk flowers, garden and private. Choose the atmosphere that suits you."
     },
     "hero": {
       "title": "Burial sections",
@@ -260,15 +260,15 @@
         ]
       },
       "premium": {
-        "title": "Premium section",
-        "atmosphere": "Premium · Special · Exclusive",
-        "description": "The farm's premium section — an exclusive place reserved for pets who held a special place in the family's heart. The section is larger, with more elaborate headstones, central location and increased privacy. Every detail is designed with care to provide the ultimate honor.",
+        "title": "Private section",
+        "atmosphere": "Private · Quiet · Personal",
+        "description": "A quiet and personal section, with increased privacy and fewer disturbances. Located on the side of the farm, it provides a more intimate place for remembrance and visits. Suitable for those seeking a private, restful spot a bit away from the rest — without compromising on the care and respect kept in every section.",
         "features": [
           "Wider section with increased privacy",
-          "Elaborate and premium headstone",
-          "Personalized design options",
-          "Central and prominent location",
-          "Maintenance at the highest level"
+          "Headstone of your choice — simple or designed",
+          "Set-aside, quiet location",
+          "Fewer disturbances during visits",
+          "The same level of care as the other sections"
         ]
       }
     },

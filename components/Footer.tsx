@@ -19,7 +19,9 @@ export default function Footer() {
             <img
               src="/images/logo.png"
               alt={tSite('fullName')}
-              className="h-12 w-auto mb-4 bg-white/90 rounded-soft px-3 py-2"
+              width={1983}
+              height={254}
+              className="h-10 w-auto max-w-none object-contain mb-4 bg-white/90 rounded-soft p-2"
             />
             <p className="text-primary-light/90 text-sm leading-relaxed">
               {t('tagline')}

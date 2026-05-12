@@ -5,6 +5,7 @@ import { Link } from '@/i18n/routing';
 import TrustBar from '@/components/TrustBar';
 import ServiceCard from '@/components/ServiceCard';
 import CTASection from '@/components/CTASection';
+import HomeCarousel from '@/components/HomeCarousel';
 
 export async function generateMetadata({
   params,
@@ -214,6 +215,10 @@ export default function HomePage({
           </div>
         </div>
       </section>
+
+      <div className="bg-primary-light/40">
+        <HomeCarousel />
+      </div>
 
       <CTASection />
     </>
