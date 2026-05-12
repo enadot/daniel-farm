@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl';
 import PageHero from '@/components/PageHero';
 import GalleryGrid from '@/components/GalleryGrid';
 import CTASection from '@/components/CTASection';
+import RenderBuilderContent from '@/components/RenderBuilderContent';
+import { getBuilderPage } from '@/lib/builder';
 
 export async function generateMetadata({
   params,
@@ -15,12 +17,24 @@ export async function generateMetadata({
   return { title: t('title'), description: t('description') };
 }
 
-export default function GalleryPage({
+export default async function GalleryPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  setRequestLocale(params.locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const builderContent = await getBuilderPage('/gallery', locale);
+  return <GalleryPageBody builderContent={builderContent} locale={locale} />;
+}
+
+function GalleryPageBody({
+  builderContent,
+  locale,
+}: {
+  builderContent: Awaited<ReturnType<typeof getBuilderPage>>;
+  locale: string;
+}) {
   const t = useTranslations('gallery');
 
   return (
@@ -39,6 +53,12 @@ export default function GalleryPage({
           <GalleryGrid />
         </div>
       </section>
+
+      <RenderBuilderContent
+        content={builderContent}
+        model="page"
+        locale={locale}
+      />
 
       <CTASection title={t('ctaTitle')} description={t('ctaDescription')} />
     </>

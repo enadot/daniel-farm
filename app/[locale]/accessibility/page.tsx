@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations, useMessages } from 'next-intl';
 import PageHero from '@/components/PageHero';
+import RenderBuilderContent from '@/components/RenderBuilderContent';
+import { getBuilderPage } from '@/lib/builder';
 
 export async function generateMetadata({
   params,
@@ -19,12 +21,26 @@ type AccessibilityMessages = {
   };
 };
 
-export default function AccessibilityPage({
+export default async function AccessibilityPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  setRequestLocale(params.locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const builderContent = await getBuilderPage('/accessibility', locale);
+  return (
+    <AccessibilityPageBody builderContent={builderContent} locale={locale} />
+  );
+}
+
+function AccessibilityPageBody({
+  builderContent,
+  locale,
+}: {
+  builderContent: Awaited<ReturnType<typeof getBuilderPage>>;
+  locale: string;
+}) {
   const t = useTranslations('accessibility');
   const messages = useMessages() as unknown as AccessibilityMessages;
   const items = messages.accessibility.features.items;
@@ -130,6 +146,12 @@ export default function AccessibilityPage({
           </div>
         </div>
       </article>
+
+      <RenderBuilderContent
+        content={builderContent}
+        model="page"
+        locale={locale}
+      />
     </>
   );
 }

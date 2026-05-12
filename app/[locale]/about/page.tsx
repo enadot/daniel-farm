@@ -3,6 +3,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import PageHero from '@/components/PageHero';
 import CTASection from '@/components/CTASection';
+import RenderBuilderContent from '@/components/RenderBuilderContent';
+import { getBuilderPage } from '@/lib/builder';
 
 export async function generateMetadata({
   params,
@@ -30,12 +32,24 @@ const valueIcons: Record<(typeof valueKeys)[number], string> = {
   discreet: '🤫',
 };
 
-export default function AboutPage({
+export default async function AboutPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  setRequestLocale(params.locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const builderContent = await getBuilderPage('/about', locale);
+  return <AboutPageBody builderContent={builderContent} locale={locale} />;
+}
+
+function AboutPageBody({
+  builderContent,
+  locale,
+}: {
+  builderContent: Awaited<ReturnType<typeof getBuilderPage>>;
+  locale: string;
+}) {
   const t = useTranslations('about');
 
   return (
@@ -130,6 +144,12 @@ export default function AboutPage({
           </ol>
         </div>
       </section>
+
+      <RenderBuilderContent
+        content={builderContent}
+        model="page"
+        locale={locale}
+      />
 
       <CTASection
         title={t('ctaTitle')}

@@ -6,6 +6,10 @@ import TrustBar from '@/components/TrustBar';
 import ServiceCard from '@/components/ServiceCard';
 import CTASection from '@/components/CTASection';
 import HomeCarousel from '@/components/HomeCarousel';
+import CallbackForm from '@/components/CallbackForm';
+import SeoContent from '@/components/SeoContent';
+import RenderBuilderContent from '@/components/RenderBuilderContent';
+import { getBuilderPage } from '@/lib/builder';
 
 export async function generateMetadata({
   params,
@@ -30,17 +34,29 @@ const homeSectionEmojis: Record<(typeof homeSectionKeys)[number], string> = {
   marble: '🏛️',
   silk: '🌸',
   garden: '🌳',
-  premium: '⭐',
+  premium: '🤍',
 };
 
 const statKeys = ['years', 'founded', 'available', 'personal'] as const;
 
-export default function HomePage({
+export default async function HomePage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  setRequestLocale(params.locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const builderContent = await getBuilderPage('/', locale);
+  return <HomePageBody builderContent={builderContent} locale={locale} />;
+}
+
+function HomePageBody({
+  builderContent,
+  locale,
+}: {
+  builderContent: Awaited<ReturnType<typeof getBuilderPage>>;
+  locale: string;
+}) {
   const t = useTranslations('home');
   const tCommon = useTranslations('common');
 
@@ -109,6 +125,8 @@ export default function HomePage({
       </section>
 
       <TrustBar />
+
+      <CallbackForm />
 
       <section className="section-padding" aria-labelledby="services-title">
         <div className="container-content">
@@ -219,6 +237,14 @@ export default function HomePage({
       <div className="bg-primary-light/40">
         <HomeCarousel />
       </div>
+
+      <SeoContent />
+
+      <RenderBuilderContent
+        content={builderContent}
+        model="page"
+        locale={locale}
+      />
 
       <CTASection />
     </>

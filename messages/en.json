@@ -510,5 +510,121 @@
     "description": "The page may have been removed, or the link is incorrect. You can return to the home page or contact us.",
     "home": "Back to home",
     "contact": "Contact us"
+  },
+  "callback": {
+    "title": "Need help saying goodbye to your four-legged friend?",
+    "description": "Leave your details and let us give them the dignity they deserve. Daniel will get back to you personally — patiently and with complete discretion.",
+    "ariaLabel": "Callback request form",
+    "name": "Full name",
+    "namePlaceholder": "Jane Doe",
+    "phone": "Mobile phone",
+    "phonePlaceholder": "050-1234567",
+    "area": "Service area",
+    "areas": {
+      "select": "Select an area",
+      "telAviv": "Tel Aviv & central",
+      "sharon": "Sharon",
+      "shfela": "Shfela",
+      "jerusalem": "Jerusalem area",
+      "haifa": "Haifa & north",
+      "south": "Beer Sheva & south",
+      "other": "Other / arrange pickup"
+    },
+    "consent": "I agree to the privacy policy and to be contacted by phone.",
+    "consentNote": "Your details are kept fully confidential and will not be shared with third parties.",
+    "submit": "Request a callback",
+    "submitting": "Sending...",
+    "successTitle": "Thank you — we received your details",
+    "successDesc": "Daniel will get back to you shortly. For an immediate response, you can always call 052-3288557.",
+    "errorGeneric": "Something went wrong. Please try again or call us directly.",
+    "errorNetwork": "Network issue. Please try again or call 052-3288557.",
+    "errorConsent": "Please accept the privacy policy to continue."
+  },
+  "seoContent": {
+    "title": "Pet cemetery in Israel — saying goodbye to a true friend with dignity",
+    "lead": "Saying goodbye to a beloved pet is one of the hardest moments a family can go through. After years of unconditional love, friendship and loyalty, it is natural to want to give our faithful companion a dignified, loving farewell. Chavat Daniel has been a real home for Israeli families since 1973 — a quiet, well-kept and pastoral place where you can come and remember your loved one.",
+    "faqTitle": "Frequently asked questions",
+    "sections": [
+      {
+        "title": "Why does losing a pet feel so deep?",
+        "paragraphs": [
+          "The day-to-day bond with a pet creates an emotional connection that is hard to replace. For years they have been an inseparable part of the family — a daily presence of love, loyalty and reassurance. This loss is not like any other, because it touches a relationship that has no words, only pure heart connection.",
+          "In a world where pets are seen as part of the home, the need to find a dignified, human way to part with them is natural. A proper pet cemetery is exactly that: a place that provides a complete, respectful solution, preserves their memory, and gives them a final resting place that reflects all the love we gave them in life."
+        ]
+      },
+      {
+        "title": "How does the farewell continue after the burial?",
+        "paragraphs": [
+          "A pet cemetery is more than a physical solution — it provides deep emotional meaning. Families who come to us at the farm find comfort in knowing their beloved friend rests in a protected, well-kept and clean environment. The relief continues in the knowledge that the farewell was done properly, with respect, sensitivity and love.",
+          "Beyond that, we offer intimate farewell ceremonies, personalized headstones and a corner to leave a memento. The ability to return and visit, to speak to your pet in your heart, or simply to sit quietly by their resting place provides real, healing closure. The bond between a person and their animal doesn't end at the moment of parting — it continues in memory and love."
+        ]
+      },
+      {
+        "title": "Burial options at Chavat Daniel",
+        "paragraphs": [
+          "Several options are available, designed around each family's needs. You're welcome to call us or arrange a visit — together we'll find what fits you best.",
+          "The first option is burial without your presence: we come to pick up your pet and take care of a proper, dignified burial at the farm. The second is a farewell ceremony with the family present, scheduled in advance — including the option of a personalized headstone. In both cases we handle every step and keep you informed throughout."
+        ]
+      },
+      {
+        "title": "A pet cemetery vs. the alternatives",
+        "paragraphs": [
+          "When the moment comes, many families wonder what the most respectful path is. Local municipalities in Israel are formally authorized to run pet cemeteries, but in practice almost none do. Other priorities always come first, and that's why most families turn to private solutions.",
+          "Another option is cremation — receiving the ashes in a personal urn, or scattering them in a meaningful place. We offer this at Chavat Daniel too. Still, most families prefer burial in a section, because it provides a permanent place to come back to and remember."
+        ]
+      },
+      {
+        "title": "Common mistakes worth avoiding",
+        "paragraphs": [
+          "When a pet passes away suddenly, many people improvise out of pressure. A private yard isn't always suitable — few of us set aside space for a burial plot in advance. Taking the body \"somewhere out in nature\" doesn't honor the animal, exposes it to scavengers, and risks polluting the environment.",
+          "If the pet died of illness, the environmental risk grows. And digging and burying a larger animal isn't physically simple — and in most places it's not even legal. A proper cemetery provides the right solution: orderly, lawful, aesthetic, and above all respectful."
+        ]
+      },
+      {
+        "title": "More than a burial place",
+        "paragraphs": [
+          "A pet cemetery is much more than a physical burial site. It is a space that blends history, culture and emotion, and reflects the deep bond between people and their animals. At the farm you'll find headstones that tell stories, quiet seating corners and nature all around — cared for daily.",
+          "Beyond traditional burial options, you can choose from a range of memorial markers: marble or granite headstones, personal engravings, an engraved photo, or simply a small tree planted in memory. Every family has its own way of remembering."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Why choose a proper place like Chavat Daniel?",
+        "answer": "A proper place provides a dignified, lawful and safe environment for your beloved pet. The sections are maintained for years, there is no environmental or health hazard, and you have a permanent place to return to. It is also ethical and respectful — unlike improvised solutions that may harm the animal or the environment."
+      },
+      {
+        "question": "How much does pet burial cost?",
+        "answer": "The price varies based on the service and whether a headstone is included. It does not have to be expensive. We recommend calling us and telling us about your needs, and we'll build an offer together. The price covers preparing the site, long-term care and the actual work — not just the moment of burial."
+      },
+      {
+        "question": "Can we hold a personal farewell ceremony?",
+        "answer": "Absolutely. Most families who come to the farm choose to hold a ceremony — short or long, simple or detailed, depending on how you feel. You can bring flowers, light a candle, read a poem, say a few words, or simply sit quietly. We accompany and guide you, but every choice is yours."
+      },
+      {
+        "question": "What options exist for a pet that has passed away?",
+        "answer": "The common options are burial in a section, cremation (and receiving the ashes), or a combination — for example, burial followed by a memorial marker. At the farm we offer all of these, plus home pickup. The right choice is always personal, and we recommend talking to us before deciding."
+      },
+      {
+        "question": "Can I visit the farm after the burial?",
+        "answer": "Yes, of course. Pet owners are welcome to visit by phone appointment. You can bring flowers, small mementos, or simply sit quietly. Many people come on meaningful dates like a birthday or anniversary, while others visit more often in the first period after the loss."
+      },
+      {
+        "question": "What does the preparation process look like?",
+        "answer": "The first step is a phone call. We explain the options, guide you to a suitable section and arrange your arrival — yours or a home pickup service. We then choose together the type of burial and whether you want a ceremony in your presence. Finally we discuss headstone or memorial marker details if you choose one. Every step is handled with sensitivity and patience."
+      },
+      {
+        "question": "Can all kinds of pets be buried at the farm?",
+        "answer": "In most cases yes — not only dogs and cats. We have buried rabbits, hamsters, ferrets, parrots and more. Especially large animals may require special arrangements, so we recommend checking with us in advance about suitability and options."
+      },
+      {
+        "question": "Is the burial done in a coffin or directly in the ground?",
+        "answer": "Both options are available: a biodegradable coffin (wood or sturdy cardboard) or direct burial wrapped in cotton fabric. Both are dignified, and the decision is yours — some prefer the closure of a coffin, others prefer the natural, environmentally friendly approach."
+      },
+      {
+        "question": "Is a special authorization required?",
+        "answer": "In most cases no. For certain contagious diseases we may ask for a vet's note confirming the cause of death, for hygiene and safety reasons. If you don't have such documentation, your vet can usually issue it after the fact."
+      }
+    ]
   }
 }

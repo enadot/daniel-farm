@@ -3,6 +3,8 @@ import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { useTranslations } from 'next-intl';
 import PageHero from '@/components/PageHero';
 import ContactForm from '@/components/ContactForm';
+import RenderBuilderContent from '@/components/RenderBuilderContent';
+import { getBuilderPage } from '@/lib/builder';
 
 export async function generateMetadata({
   params,
@@ -14,12 +16,24 @@ export async function generateMetadata({
   return { title: t('title'), description: t('description') };
 }
 
-export default function ContactPage({
+export default async function ContactPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  setRequestLocale(params.locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const builderContent = await getBuilderPage('/contact', locale);
+  return <ContactPageBody builderContent={builderContent} locale={locale} />;
+}
+
+function ContactPageBody({
+  builderContent,
+  locale,
+}: {
+  builderContent: Awaited<ReturnType<typeof getBuilderPage>>;
+  locale: string;
+}) {
   const t = useTranslations('contact');
   const tCommon = useTranslations('common');
   const tFooter = useTranslations('footer');
@@ -153,6 +167,12 @@ export default function ContactPage({
           </div>
         </div>
       </section>
+
+      <RenderBuilderContent
+        content={builderContent}
+        model="page"
+        locale={locale}
+      />
     </>
   );
 }

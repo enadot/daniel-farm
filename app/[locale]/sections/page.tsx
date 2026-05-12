@@ -4,6 +4,8 @@ import { useTranslations, useMessages } from 'next-intl';
 import PageHero from '@/components/PageHero';
 import SectionCard from '@/components/SectionCard';
 import CTASection from '@/components/CTASection';
+import RenderBuilderContent from '@/components/RenderBuilderContent';
+import { getBuilderPage } from '@/lib/builder';
 
 export async function generateMetadata({
   params,
@@ -20,7 +22,7 @@ const sectionEmojis: Record<(typeof sectionKeys)[number], string> = {
   marble: '🏛️',
   silk: '🌸',
   garden: '🌳',
-  premium: '⭐',
+  premium: '🤍',
 };
 
 type SectionMessages = {
@@ -32,12 +34,24 @@ type SectionMessages = {
   };
 };
 
-export default function SectionsPage({
+export default async function SectionsPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  setRequestLocale(params.locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const builderContent = await getBuilderPage('/sections', locale);
+  return <SectionsPageBody builderContent={builderContent} locale={locale} />;
+}
+
+function SectionsPageBody({
+  builderContent,
+  locale,
+}: {
+  builderContent: Awaited<ReturnType<typeof getBuilderPage>>;
+  locale: string;
+}) {
   const t = useTranslations('sections');
   const messages = useMessages() as unknown as SectionMessages;
 
@@ -89,6 +103,12 @@ export default function SectionsPage({
           </a>
         </div>
       </section>
+
+      <RenderBuilderContent
+        content={builderContent}
+        model="page"
+        locale={locale}
+      />
 
       <CTASection />
     </>

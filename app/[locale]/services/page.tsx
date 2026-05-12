@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl';
 import PageHero from '@/components/PageHero';
 import ServiceCard from '@/components/ServiceCard';
 import CTASection from '@/components/CTASection';
+import RenderBuilderContent from '@/components/RenderBuilderContent';
+import { getBuilderPage } from '@/lib/builder';
 
 export async function generateMetadata({
   params,
@@ -35,12 +37,24 @@ const serviceIcons: Record<(typeof serviceKeys)[number], string> = {
 
 const stepKeys = ['step1', 'step2', 'step3', 'step4', 'step5'] as const;
 
-export default function ServicesPage({
+export default async function ServicesPage({
   params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
-  setRequestLocale(params.locale);
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const builderContent = await getBuilderPage('/services', locale);
+  return <ServicesPageBody builderContent={builderContent} locale={locale} />;
+}
+
+function ServicesPageBody({
+  builderContent,
+  locale,
+}: {
+  builderContent: Awaited<ReturnType<typeof getBuilderPage>>;
+  locale: string;
+}) {
   const t = useTranslations('services');
 
   return (
@@ -96,6 +110,12 @@ export default function ServicesPage({
           </ol>
         </div>
       </section>
+
+      <RenderBuilderContent
+        content={builderContent}
+        model="page"
+        locale={locale}
+      />
 
       <CTASection
         title={t('ctaTitle')}

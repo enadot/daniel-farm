@@ -1,116 +1,138 @@
-# תוכנית אינטגרציה ל-CMS עם עורך Drag-and-Drop
+# Builder.io — מדריך עריכת האתר
 
-מסמך זה מתאר כיצד לחבר את האתר ל-**Builder.io** — שירות חינמי עם עורך ויזואלי גרפי לעריכת תוכן, קומפוננטות, צבעים ועוד ללא צורך לערוך קוד.
+האתר מחובר לחשבון Builder.io שלך. אפשר לערוך כל עמוד, להוסיף קומפוננטות drag-and-drop, להחליף תמונות וטקסטים, ולקבוע צבעים — בלי לגעת בקוד.
 
-## למה Builder.io
+## חיבור ראשון
 
-- **Drag-and-drop מלא** — עורך ויזואלי דמוי Figma/Webflow, גם למשתמשים לא טכניים
-- **חינם** — Free tier כולל משתמש אחד, ביקורים בלתי מוגבלים, וגרסה אחת
-- **תומך Next.js 14 App Router ו-i18n** — מתחבר נטיבית ל-locales שלנו (he/en/ru)
-- **התחברות עם משתמש/סיסמה** — Builder מספק UI ניהול שלם, אין צורך לבנות לוח בקרה לבד
-- **שליטה במה שניתן לערוך** — מגדירים אילו טקסטים/קומפוננטות מותרים בעריכה, השאר נשאר hard-coded ובטוח
-- **תמיכה בקומפוננטות מותאמות** — כל קומפוננטה שכבר קיימת (ServiceCard, SectionCard וכו') יכולה להופיע ככלי בעורך
-
-## מה ניתן יהיה לערוך דרך Builder.io
-
-לאחר ההגדרה, מהממשק של builder.io ניתן יהיה:
-
-- ✅ לערוך טקסטים בכל עמוד (כותרות, פסקאות, כפתורים)
-- ✅ להחליף תמונות (העלאה ישירה, ללא צורך ב-deploy)
-- ✅ לגרור ולשחרר קומפוננטות חדשות לעמוד (Service Card, Section Card, CTA Section וכו')
-- ✅ לעדכן את צבעי המותג
-- ✅ להוסיף/להסיר פריטי תפריט
-- ✅ לערוך לוגו
-- ✅ לעדכן תוכן בכל שפה בנפרד (he/en/ru)
-- ✅ לבצע preview לפני פרסום
-- ✅ לראות גרסאות קודמות ולחזור אחורה
-
-## שלבי ההטמעה (כשהמשתמש פותח חשבון)
-
-### שלב 1 — פתיחת חשבון
-
-1. להירשם ב-https://builder.io/signup (חינם, ללא כרטיס אשראי)
-2. ליצור Space חדש בשם "Chavat Daniel"
-3. לקבל מ-Settings → API Keys את ה-**Public API Key**
-
-### שלב 2 — התקנת SDK
+### 1. התקנה מקומית (חד-פעמית)
 
 ```bash
-npm install @builder.io/react @builder.io/sdk-react-nextjs
+npm install
+cp .env.local.example .env.local
+npm run dev
 ```
 
-הוספה ל-`.env.local`:
+`.env.local` כבר מכיל את ה-API Key הציבורי (`6728a5ea20e84fb486556b6399dea5b3`). אפשר גם פשוט להגדיר אותו במשתני סביבה בפלטפורמת ה-hosting (Vercel/Netlify) כ-`NEXT_PUBLIC_BUILDER_API_KEY`.
+
+### 2. רישום Builder ל-domain שלך
+
+ב-Builder.io: **Account → Spaces → Settings → Site URL**
+
+הזן את כתובת האתר שלך (לדוגמה `https://chavat-daniel.co.il` או הקישור הזמני של Vercel/Netlify). זה מאפשר למצב Preview ב-Builder לטעון את האתר ב-iframe.
+
+## איך עורכים תוכן בעמוד קיים
+
+כל עמוד באתר כבר חשוף לעריכה:
+
+| נתיב | URL ב-Builder |
+|------|---------------|
+| דף הבית | `/` |
+| השירותים שלנו | `/services` |
+| חלקות הקבורה | `/sections` |
+| גלריה | `/gallery` |
+| אודות | `/about` |
+| צור קשר | `/contact` |
+| הצהרת נגישות | `/accessibility` |
+
+### יצירת תוכן בעמוד
+
+1. ב-Builder.io, לחץ על **+ New** → בחר **Page**
+2. במסך הבא:
+   - **Name**: למשל "Home — Hebrew" (כדי שתזכרו מה זה)
+   - **URL**: ב-Path הכנס את הנתיב מהטבלה למעלה (`/` לדף הבית)
+   - **Locale**: בחר עברית, אנגלית או רוסית
+3. לחץ **Create**
+4. בעורך הויזואלי, גרור קומפוננטות מהפאנל הימני (Service Card, CTA Section, Photo Carousel, Callback Form, וכו')
+5. ערוך טקסטים בלחיצה עליהם
+6. כשמוכן — **Publish**
+
+התוכן שתפרסם יופיע **בנוסף** לתוכן הקיים בעמוד, מתחת לכל הקטעים הקיימים ולפני ה-CTA הסופי. כך הדף שלך נראה כמו תמיד, פלוס מה שאתה מוסיף.
+
+### דריסת עמוד שלם
+
+אם תרצה להחליף **לגמרי** עמוד קיים: ב-Builder, ערוך את הדף שיצרת, וצור בו את כל התוכן שאתה רוצה. הקוד שלי כבר טוען את התוכן מ-Builder ומציג אותו בסוף העמוד; כדי לעשות override מלא צריך עדכון קטן בקוד — תגיד לי איזה עמודים תרצה להפוך ל"מנוהל לחלוטין ב-Builder" ואסיר את התוכן הקבוע.
+
+## קומפוננטות זמינות בעורך
+
+הקומפוננטות הבאות רשומות ב-Builder ועומדות לרשותך ככלי drag-and-drop:
+
+- **Service Card** — כרטיס שירות (icon, title, description)
+- **Section Card** — כרטיס חלקה (emoji, title, atmosphere, description, features)
+- **Page Hero** — בלוק כותרת לעמוד (emoji, title, subtitle)
+- **CTA Section** — אזור קריאה לפעולה (title, description)
+- **Trust Bar** — סרגל ערכים
+- **Photo Carousel** — קרוסלה אופקית של גלריה
+- **Gallery Grid** — רשת גלריה עם lightbox
+- **Callback Form** — טופס שיחה חוזרת (title, description ניתנים לדריסה)
+- **SEO Article** — מאמר ה-SEO + FAQ
+
+חוץ מאלה, יש גם את כל הקומפוננטות המובנות של Builder: טקסט, תמונה, וידאו, סקציה, columns, וכו'.
+
+## ריבוי שפות (i18n)
+
+לכל עמוד אפשר ליצור גרסה לכל אחת מ-3 השפות (he / en / ru). ב-Builder תוכל לשכפל עמוד קיים ולשנות את ה-Locale.
+
+האתר ידע להציג את הגרסה הנכונה אוטומטית: גולש שמגיע ל-`/` יראה את גרסת ה-Hebrew, ל-`/en` את האנגלית, ל-`/ru` את הרוסית.
+
+## טופס שיחה חוזרת — webhook ללידים
+
+טופס "שיחה חוזרת" בדף הבית שולח את הלידים ל-webhook חיצוני (Zapier, Make, n8n, או כל מערכת לידים).
+
+### דרך 1: משתנה סביבה (פשוט, לא דורש Builder)
+
+ב-Vercel/Netlify הגדר:
 
 ```
-NEXT_PUBLIC_BUILDER_API_KEY=<המפתח שהתקבל>
+LEAD_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/XXXX/YYYY
 ```
 
-### שלב 3 — חיבור קומפוננטות הקוד הקיימות
+### דרך 2: דרך Builder (אפשר לשנות בלי deploy)
 
-יצירת קובץ `lib/builder-registry.ts` שירשום את הקומפוננטות הקיימות (`ServiceCard`, `SectionCard`, `CTASection`, `PageHero`, וכו') ככלים זמינים בעורך, עם הגדרת ה-props שניתנים לעריכה:
+1. ב-Builder.io → **Models** → **+ Create Model**
+2. סוג: **Data**, שם: `settings`
+3. הוסף שדה: **Name**: `leadWebhookUrl`, **Type**: Text
+4. שמור, צור entry חדש של המודל, והדבק את ה-URL של ה-webhook שלך
+5. **Publish**
 
-```ts
-import { Builder } from '@builder.io/react';
-import ServiceCard from '@/components/ServiceCard';
+מערכת הלידים תקבל JSON בפורמט:
 
-Builder.registerComponent(ServiceCard, {
-  name: 'ServiceCard',
-  inputs: [
-    { name: 'icon', type: 'text', defaultValue: '🌿' },
-    { name: 'title', type: 'text', required: true },
-    { name: 'description', type: 'longText', required: true },
-  ],
-});
-// וכן הלאה לכל קומפוננטה
-```
-
-### שלב 4 — מודל תוכן בעמוד
-
-בעורך של Builder יוצרים Model בשם "Page" ומגדירים שדה לכל אזור שרוצים שיהיה ניתן לעריכה (Hero, Services Section, Why-us, וכו'). Builder מטפל לבד בריבוי שפות אם מסומן שהמודל "Localized".
-
-### שלב 5 — Rendering ב-Next.js
-
-כל עמוד (`app/[locale]/page.tsx` וכו') יקרא ל-`getContent()` של Builder ויעטוף את התוכן ב-`<BuilderComponent />`. ה-`messages/*.json` הקיים יישאר fallback למקרה שהתוכן עוד לא הועלה דרך ה-CMS.
-
-```tsx
-import { builder } from '@builder.io/sdk-react-nextjs';
-import { RenderBuilderContent } from '@/components/builder';
-
-builder.init(process.env.NEXT_PUBLIC_BUILDER_API_KEY!);
-
-export default async function Page({ params }) {
-  const content = await builder
-    .get('page', { userAttributes: { urlPath: '/' }, locale: params.locale })
-    .toPromise();
-
-  return <RenderBuilderContent content={content} model="page" />;
+```json
+{
+  "name": "ישראל ישראלי",
+  "phone": "0501234567",
+  "area": "telAviv",
+  "source": "chavat-daniel.co.il",
+  "submittedAt": "2026-05-12T10:23:00.000Z",
+  "referrer": "https://chavat-daniel.co.il/",
+  "userAgent": "..."
 }
 ```
 
-### שלב 6 — Webhook ל-revalidation
+> אם לא הוגדר webhook (אף שיטה), הטופס עדיין יציג "תודה" למגיש ויירשם בלוגים של השרת — הליד לא יאבד.
 
-הוספת route `/api/revalidate` שמופעל מ-Builder כשמשתמש מפרסם, כדי שהאתר יתרענן מיידית.
+## Webhook לעדכון אוטומטי של האתר אחרי Publish
 
-## מה אני צריך ממך כדי להתחיל
+כדי שכל פעם שאתה מפרסם שינוי ב-Builder, האתר יתעדכן מיד (בלי לחכות לקאש), הגדר webhook:
 
-1. **חשבון Builder.io** פתוח (https://builder.io/signup)
-2. **Public API Key** מ-Settings → API Keys
-3. **החלטה אילו אזורים** באתר יהיו ניתנים לעריכה דרך CMS (ההמלצה שלי: hero, services, why-us, sections — כלומר עמוד הבית במלואו. עמודים פנימיים אפשר להשאיר מתורגמים מקובץ JSON בשלב הראשון)
+1. **בחר secret**: סטרינג רנדומלי, למשל מ-https://generate-secret.vercel.app/32
+2. ב-Vercel/Netlify הגדר: `BUILDER_WEBHOOK_SECRET=הסטרינג-שלך`
+3. ב-Builder: **Account Settings → Webhooks → Add Webhook**
+   - URL: `https://chavat-daniel.co.il/api/revalidate?secret=הסטרינג-שלך`
+   - Event: `content.publish`
+4. שמור
 
-ברגע שתפתח חשבון ותעביר לי את ה-API Key, אני אבצע את שלבים 2—6.
+עכשיו כל Publish ב-Builder יקרא ל-revalidate אצלנו ויעדכן את הקאש של Next.js.
 
-## עלות
+## בעיות נפוצות
 
-- **כל מה שמתואר כאן — חינם**
-- Free tier מספיק לאתר הזה (פחות מ-25K visits בחודש)
-- אין הפתעות עתידיות: רק אם תרצה משתמשים נוספים שיוכלו לערוך, או workflow של אישור פרסום — אז יש שדרוג בתשלום
+**"התוכן שיצרתי לא מופיע באתר"**
+- ודא שלחצת **Publish** (לא רק Save)
+- ודא שה-URL ב-Builder תואם בדיוק לנתיב באתר (כולל `/`)
+- ודא שה-Locale ב-Builder תואם לשפה של הדף
 
-## חלופה: Sanity Studio (אם Builder.io לא מתאים)
+**"רוצה לערוך את ההדר/פוטר"**
+- אלה לא נחשפו ל-Builder ב-v1 כי הם מכילים לוגיקה (מתג שפות, נווט). אם תרצה גם אותם — תגיד לי ואחבר אותם.
 
-אם תרצה משהו עם פחות "drag-and-drop" וחזק יותר במודלים של תוכן (למשל קטלוג של חלקות, מצבות לדוגמה, וכו'), הגיוני גם Sanity:
+## עזרה
 
-- חינם עד 3 משתמשים
-- ממשק ניהול חזק (לא drag-and-drop ויזואלי)
-- שליטה מלאה במודל התוכן
-
-אבל לרוב המקרים — Builder.io עונה יותר טוב על "drag-and-drop editor שמתחברים אליו עם משתמש".
+יש שאלות נוספות? תגיד מה אתה רוצה לערוך, או שלח צילום מסך מ-Builder, ונפתור.
