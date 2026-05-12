@@ -46,7 +46,7 @@ export default function Header() {
       >
         {t('skipToContent')}
       </a>
-      <div className="container-content">
+      <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16">
         <div className="flex items-center justify-between h-20 gap-2">
           <Link
             href="/"
