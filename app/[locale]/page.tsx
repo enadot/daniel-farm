@@ -21,12 +21,12 @@ export async function generateMetadata({
   return { title: t('title'), description: t('description') };
 }
 
-const homeServiceKeys = ['burial', 'cremation', 'headstone', 'transport'] as const;
+const homeServiceKeys = ['burial', 'headstone', 'transport', 'visitors'] as const;
 const homeServiceIcons: Record<(typeof homeServiceKeys)[number], string> = {
   burial: '🌿',
-  cremation: '🕯️',
   headstone: '🪨',
   transport: '🚖',
+  visitors: '🌷',
 };
 
 const homeSectionKeys = ['marble', 'silk', 'garden', 'premium'] as const;

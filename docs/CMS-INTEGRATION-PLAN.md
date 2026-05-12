@@ -76,23 +76,69 @@ npm run dev
 
 ## טופס שיחה חוזרת — webhook ללידים
 
-טופס "שיחה חוזרת" בדף הבית שולח את הלידים ל-webhook חיצוני (Zapier, Make, n8n, או כל מערכת לידים).
+טופס "שיחה חוזרת" בדף הבית שולח את הלידים ל-webhook חיצוני (Zapier, Make, n8n, או כל מערכת לידים), והכל גם נשמר ב**לוח הבקרה שלנו** ב-`/admin`.
 
-### דרך 1: משתנה סביבה (פשוט, לא דורש Builder)
+### דרך מומלצת: לוח הבקרה ב-`/admin`
 
-ב-Vercel/Netlify הגדר:
+ראה את הסעיף הבא — "לוח בקרה משלנו". הוא מאפשר לערוך את ה-webhook URL מתוך ממשק נקי שלנו, בלי תלות ב-Builder, ולראות את כל הלידים שהתקבלו בטבלה.
+
+### דרכים חלופיות
+
+- **משתנה סביבה ב-Vercel** (מקסימום-prioritet): הגדר `LEAD_WEBHOOK_URL=...` במשתני הסביבה. זה דורס כל מה שיוגדר בלוח הבקרה.
+- **Builder Data Model** (legacy): אם יצרת בעבר Model בשם `settings` עם שדה `leadWebhookUrl` ב-Builder — הקוד עוד יקרא ממנו כ-fallback אחרון.
+
+## לוח בקרה משלנו — `/admin`
+
+נכנסים לכתובת: `https://YOUR_DOMAIN/admin`
+
+### הגדרה ראשונית (חד-פעמית, ב-Vercel)
+
+הוסף שני env vars:
 
 ```
-LEAD_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/XXXX/YYYY
+ADMIN_PASSWORD=הסיסמה-שתבחר
+ADMIN_SECRET=מחרוזת-רנדומלית-ארוכה
 ```
 
-### דרך 2: דרך Builder (אפשר לשנות בלי deploy)
+(`ADMIN_SECRET` משמש לחתימת ה-cookie של ההתחברות. אפשר לייצר אותה עם
+`openssl rand -hex 32` או באתר https://generate-secret.vercel.app/32.)
 
-1. ב-Builder.io → **Models** → **+ Create Model**
-2. סוג: **Data**, שם: `settings`
-3. הוסף שדה: **Name**: `leadWebhookUrl`, **Type**: Text
-4. שמור, צור entry חדש של המודל, והדבק את ה-URL של ה-webhook שלך
-5. **Publish**
+### לאחסון לאורך זמן (מומלץ ב-Production): הפעל Vercel KV
+
+בלי KV, ההגדרות והלידים יישמרו בזיכרון בלבד ויאופסו בכל deploy.
+ב-Vercel:
+1. הפרויקט → **Storage** → **Create Database** → **KV** (Upstash Redis)
+2. לחץ **Connect Project** ובחר את הפרויקט
+3. Vercel תוסיף אוטומטית את ה-env vars (`KV_URL`, `KV_REST_API_URL`, וכו')
+4. **Redeploy**
+
+### שימוש יומיומי
+
+לאחר deploy, גשו ל-`/admin`:
+
+- **כניסה**: הזן את ה-`ADMIN_PASSWORD` שהגדרת
+- **Webhook**: עדכן את ה-URL של Zapier/Make וכפתור "שמירה". תוקף מיידי
+- **Google Tag Manager**: שדה GTM-ID — הדבק את המזהה (`GTM-XXXXXXX`) וזה יוטמע בכל עמודי האתר. השאר ריק כדי לכבות
+- **לידים**: טבלה של 200 הלידים האחרונים עם שם, טלפון (לחיצה = חיוג), אזור, סטטוס webhook
+- **רענון**: כפתור "רענון" מעל הטבלה. הדף לא מתעדכן אוטומטית כדי לא להפריע
+- **יציאה**: כפתור "יציאה" בכותרת. ה-cookie מתפוגג אחרי 30 יום
+
+### מה Webhook אמור לקבל
+
+```json
+{
+  "id": "uuid",
+  "name": "ישראל ישראלי",
+  "phone": "0501234567",
+  "area": "telAviv",
+  "source": "chavat-daniel.co.il",
+  "submittedAt": "2026-05-12T10:23:00.000Z",
+  "referrer": "https://chavat-daniel.co.il/",
+  "userAgent": "Mozilla/5.0..."
+}
+```
+
+POST + Content-Type application/json. אם ה-webhook יחזיר משהו שאינו 2xx, הליד עדיין יישמר ב-`/admin` ויסומן "לא הועבר".
 
 מערכת הלידים תקבל JSON בפורמט:
 

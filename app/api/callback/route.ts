@@ -1,12 +1,15 @@
 import { NextResponse } from 'next/server';
+import { randomUUID } from 'crypto';
 import { getBuilderSettings } from '@/lib/builder';
+import { appendLead, getSettings, type Lead } from '@/lib/admin-storage';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-type Lead = {
+type IncomingLead = {
   name?: string;
   phone?: string;
+  area?: string;
   preferredTime?: string;
 };
 
@@ -15,11 +18,17 @@ async function resolveWebhookUrl(): Promise<string | null> {
   if (process.env.LEAD_WEBHOOK_URL) {
     return process.env.LEAD_WEBHOOK_URL;
   }
-  // 2. Otherwise pull from the Builder.io "settings" model so the admin
-  //    can change it without redeploying. Field name: `leadWebhookUrl`.
+  // 2. Our own admin panel storage (KV-backed).
   try {
-    const settings = await getBuilderSettings('he');
-    const url = settings?.data?.leadWebhookUrl as string | undefined;
+    const settings = await getSettings();
+    if (settings.leadWebhookUrl) return settings.leadWebhookUrl;
+  } catch (err) {
+    console.warn('[callback] could not read admin settings:', err);
+  }
+  // 3. Legacy fallback: Builder.io "settings" model.
+  try {
+    const builderSettings = await getBuilderSettings('he');
+    const url = builderSettings?.data?.leadWebhookUrl as string | undefined;
     return url || null;
   } catch {
     return null;
@@ -27,7 +36,7 @@ async function resolveWebhookUrl(): Promise<string | null> {
 }
 
 export async function POST(request: Request) {
-  let body: Lead;
+  let body: IncomingLead;
   try {
     body = await request.json();
   } catch {
@@ -36,7 +45,7 @@ export async function POST(request: Request) {
 
   const name = (body.name ?? '').toString().trim();
   const phone = (body.phone ?? '').toString().trim();
-  const preferredTime = (body.preferredTime ?? '').toString().trim();
+  const area = (body.area ?? '').toString().trim();
 
   if (!name || !phone) {
     return NextResponse.json(
@@ -47,47 +56,61 @@ export async function POST(request: Request) {
 
   const webhookUrl = await resolveWebhookUrl();
 
-  const payload = {
+  const lead: Lead = {
+    id: randomUUID(),
     name,
     phone,
-    preferredTime,
+    area: area || undefined,
     source: 'chavat-daniel.co.il',
     submittedAt: new Date().toISOString(),
     referrer: request.headers.get('referer') ?? null,
     userAgent: request.headers.get('user-agent') ?? null,
+    delivered: false,
   };
 
-  // If no webhook is configured yet, log to the server and return success so
-  // visitors never see an error during setup.
-  if (!webhookUrl) {
-    console.warn('[callback] no LEAD_WEBHOOK_URL configured — lead:', payload);
-    return NextResponse.json({ ok: true, delivered: false });
-  }
-
-  try {
-    const res = await fetch(webhookUrl, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload),
-    });
-    if (!res.ok) {
-      console.error(
-        '[callback] webhook responded with',
-        res.status,
-        await res.text().catch(() => ''),
-      );
-      return NextResponse.json(
-        { error: 'webhook_failed' },
-        { status: 502 },
-      );
+  // Forward to webhook if one is configured.
+  if (webhookUrl) {
+    try {
+      const res = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: lead.id,
+          name: lead.name,
+          phone: lead.phone,
+          area: lead.area,
+          source: lead.source,
+          submittedAt: lead.submittedAt,
+          referrer: lead.referrer,
+          userAgent: lead.userAgent,
+        }),
+      });
+      if (res.ok) {
+        lead.delivered = true;
+      } else {
+        const text = await res.text().catch(() => '');
+        lead.deliveryError = `${res.status} ${text}`.slice(0, 300);
+        console.error('[callback] webhook responded with', lead.deliveryError);
+      }
+    } catch (err) {
+      lead.deliveryError =
+        err instanceof Error ? err.message : 'unknown_error';
+      console.error('[callback] webhook fetch failed', err);
     }
-  } catch (err) {
-    console.error('[callback] webhook fetch failed', err);
-    return NextResponse.json(
-      { error: 'webhook_unreachable' },
-      { status: 502 },
-    );
+  } else {
+    lead.deliveryError = 'no_webhook_configured';
   }
 
-  return NextResponse.json({ ok: true, delivered: true });
+  // Always persist the lead so it survives in the admin panel even if
+  // the webhook is offline.
+  try {
+    await appendLead(lead);
+  } catch (err) {
+    console.error('[callback] could not persist lead:', err);
+  }
+
+  return NextResponse.json({
+    ok: true,
+    delivered: lead.delivered,
+  });
 }

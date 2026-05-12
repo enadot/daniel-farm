@@ -65,7 +65,7 @@
     "personal": "Personal care for every family"
   },
   "cta": {
-    "title": "We are here for you, any time",
+    "title": "We are here for you",
     "description": "We are here to support you through this difficult time. Reach out by WhatsApp or phone, and we will accompany you with dignity and love.",
     "whatsappAria": "Send us a WhatsApp message",
     "callAria": "Call us",
@@ -77,7 +77,7 @@
   "home": {
     "meta": {
       "title": "Chavat Daniel — Pet Memorial | Pet Cemetery since 1973",
-      "description": "Israel's first pet cemetery, operating since 1973 in Moshav Magshimim, near Savyon. Burial, cremation and headstones — with dignity and love. Contact: 052-3288557."
+      "description": "Israel's first pet cemetery, operating since 1973 in Moshav Magshimim, near Savyon. Burial and headstones — with dignity and love. Contact: 052-3288557."
     },
     "hero": {
       "badge": "Operating continuously since 1973 — the first of its kind in Israel",
@@ -96,9 +96,9 @@
           "title": "Burial in a section",
           "description": "A final resting place in the section of your choice, maintained and tended year round. Full accompaniment from the first call to the ceremony."
         },
-        "cremation": {
-          "title": "Cremation services",
-          "description": "A dignified and professional process for your pet, with the option to receive the ashes in a personal urn or to scatter them on the farm."
+        "visitors": {
+          "title": "Visitors' corner",
+          "description": "A quiet, well-kept spot you can visit by appointment, to bring flowers and sit in peace."
         },
         "headstone": {
           "title": "Custom headstone",
@@ -113,7 +113,7 @@
     "whyUs": {
       "title": "Why choose Chavat Daniel?",
       "p1": "For more than five decades, Chavat Daniel has been a real home to families who have lost a beloved pet. We founded this place in 1973 out of a deep understanding — a pet is not just an \"animal.\" It is a friend, a family member, and often the closest companion we have ever had.",
-      "p2": "We believe a dignified farewell holds enormous meaning in the process of grief and healing. That is why we offer a quiet, well-kept and respected place where you can come at any time to remember with love.",
+      "p2": "We believe a dignified farewell holds enormous meaning in the process of grief and healing. That is why we offer a quiet, well-kept and respected place where you can come by appointment to remember with love.",
       "p3a": "Daniel lives on the farm",
       "p3b": " — which means personal supervision, attention to detail, and continuous care for the place and the headstones. This is not a business — it is a calling.",
       "stats": {
@@ -153,8 +153,8 @@
   },
   "services": {
     "meta": {
-      "title": "Our services — Burial, cremation and pet headstones",
-      "description": "A range of services for your pet: burial in the section of your choice, cremation services, custom headstones, transport and a visitors' corner. Personal accompaniment and full availability for you."
+      "title": "Our services — Burial and pet headstones",
+      "description": "A range of services for your pet: burial in the section of your choice, custom headstones, transport and a visitors' corner. Personal accompaniment and full availability for you."
     },
     "hero": {
       "title": "Our services",
@@ -164,10 +164,6 @@
       "burial": {
         "title": "Burial in the section of your choice",
         "description": "At Chavat Daniel we offer four sections, each with its own character and atmosphere, so you can choose the place that best fits your pet's memory. The burial includes preparation of the site, a dignified ceremony and personal accompaniment throughout. We take care of every detail — from the burial certificate to the long-term care of the section."
-      },
-      "cremation": {
-        "title": "Cremation services",
-        "description": "The cremation is carried out with care and respect, with the option to receive the ashes personally in an urn of your choice, or to scatter them in one of the farm's sections. We provide an official certificate, and accompany you through every question and decision. All in complete discretion and with respect for the animal and the family."
       },
       "headstone": {
         "title": "Custom headstone",
@@ -179,7 +175,7 @@
       },
       "visitors": {
         "title": "Visitors' corner",
-        "description": "The farm has a quiet and well-kept visitors' corner, which you can reach at any time after a phone appointment. It is a place for reflection, remembrance and calm. You can bring flowers, light a candle, and stay as long as you wish. Daniel lives on the farm and will welcome you personally."
+        "description": "The farm has a quiet and well-kept visitors' corner, which you can reach by phone appointment. It is a place for reflection, remembrance and calm. You can bring flowers, light a candle, and stay as long as you wish. Daniel lives on the farm and will welcome you personally."
       },
       "maintenance": {
         "title": "Ongoing maintenance",
@@ -206,7 +202,7 @@
       },
       "step5": {
         "title": "Accompaniment over the years",
-        "desc": "You can visit at any time by appointment, and we take care of the ongoing maintenance of the place."
+        "desc": "You can visit by prior appointment, and we take care of the ongoing maintenance of the place."
       }
     },
     "ctaTitle": "Have a question? We are here",
@@ -250,7 +246,7 @@
       "garden": {
         "title": "Garden section",
         "atmosphere": "Natural · Shaded · Peaceful",
-        "description": "A section located under tall, mature trees, with natural shade, abundant greenery and an almost forest-like atmosphere. The place is especially quiet, and you can hear birds at any time. Suitable for those who loved nature, walks and the outdoors — dogs and animals that loved the green.",
+        "description": "A section located under tall, mature trees, with natural shade, abundant greenery and an almost forest-like atmosphere. The place is especially quiet, and you can often hear birds in the trees. Suitable for those who loved nature, walks and the outdoors — dogs and animals that loved the green.",
         "features": [
           "Shaded location among mature trees",
           "Natural vegetation around the headstone",
@@ -367,11 +363,6 @@
           "title": "Expanding the sections",
           "desc": "New sections were added and adapted to different styles, to give families more options to choose from."
         },
-        "crematorium": {
-          "year": "2000",
-          "title": "Adding cremation",
-          "desc": "Modern cremation facilities were built, allowing us to accompany families in this way as well."
-        },
         "modern": {
           "year": "2010—today",
           "title": "A new generation and technology",
@@ -385,7 +376,7 @@
       }
     },
     "ctaTitle": "Join the thousands of families we have accompanied",
-    "ctaDescription": "If you need support, we are here. Feel free to reach out at any time."
+    "ctaDescription": "If you need support, we are here. Feel free to reach out."
   },
   "contact": {
     "meta": {
@@ -394,7 +385,7 @@
     },
     "hero": {
       "title": "Contact us",
-      "subtitle": "We are here for you at any time. The fastest way is by WhatsApp or phone — we'll respond quickly, patiently and discreetly."
+      "subtitle": "We are here for you. The fastest way is by WhatsApp or phone — we'll respond quickly, patiently and discreetly."
     },
     "options": {
       "srTitle": "Ways to reach us",
@@ -570,7 +561,7 @@
         "title": "A pet cemetery vs. the alternatives",
         "paragraphs": [
           "When the moment comes, many families wonder what the most respectful path is. Local municipalities in Israel are formally authorized to run pet cemeteries, but in practice almost none do. Other priorities always come first, and that's why most families turn to private solutions.",
-          "Another option is cremation — receiving the ashes in a personal urn, or scattering them in a meaningful place. We offer this at Chavat Daniel too. Still, most families prefer burial in a section, because it provides a permanent place to come back to and remember."
+          "Most families prefer burial in a dedicated section, because it provides a permanent place to come back to, to remember and to continue the bond after parting. At Chavat Daniel we take care of the full process, including home pickup and site preparation."
         ]
       },
       {
@@ -603,7 +594,7 @@
       },
       {
         "question": "What options exist for a pet that has passed away?",
-        "answer": "The common options are burial in a section, cremation (and receiving the ashes), or a combination — for example, burial followed by a memorial marker. At the farm we offer all of these, plus home pickup. The right choice is always personal, and we recommend talking to us before deciding."
+        "answer": "The common option is burial in a dedicated section, with or without a personal headstone, and a memorial marker can also be added afterwards if you wish. At the farm we take care of the full process, including home pickup. The right choice is always personal, and we recommend talking to us before deciding."
       },
       {
         "question": "Can I visit the farm after the burial?",
