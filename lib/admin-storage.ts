@@ -9,6 +9,7 @@
 
 export type Settings = {
   leadWebhookUrl: string;
+  gtmId?: string;
 };
 
 export type Lead = {
@@ -28,7 +29,7 @@ const SETTINGS_KEY = 'chavat-daniel:settings';
 const LEADS_KEY = 'chavat-daniel:leads';
 const MAX_LEADS = 500;
 
-let memSettings: Settings = { leadWebhookUrl: '' };
+let memSettings: Settings = { leadWebhookUrl: '', gtmId: '' };
 const memLeads: Lead[] = [];
 
 type KvModule = typeof import('@vercel/kv');
@@ -55,10 +56,25 @@ export async function getSettings(): Promise<Settings> {
   const kv = await getKv();
   if (kv) {
     const stored = await kv.get<Settings>(SETTINGS_KEY);
-    return stored ?? { leadWebhookUrl: '' };
+    return stored ?? { leadWebhookUrl: '', gtmId: '' };
   }
   return { ...memSettings };
 }
+
+/**
+ * Cached version used during a single React render. Safe to call from
+ * a server component layout: subsequent calls in the same request hit
+ * the cache instead of KV.
+ */
+import { cache } from 'react';
+export const getCachedSettings = cache(async (): Promise<Settings> => {
+  try {
+    return await getSettings();
+  } catch (err) {
+    console.warn('[admin-storage] getCachedSettings failed:', err);
+    return { leadWebhookUrl: '', gtmId: '' };
+  }
+});
 
 export async function setSettings(settings: Settings): Promise<void> {
   const kv = await getKv();

@@ -5,7 +5,9 @@ import { notFound } from 'next/navigation';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
+import { GtmHeadScript, GtmNoScript } from '@/components/GtmScripts';
 import { routing } from '@/i18n/routing';
+import { getCachedSettings } from '@/lib/admin-storage';
 import '../globals.css';
 
 const GOOGLE_FONTS_URL =
@@ -64,6 +66,9 @@ export default async function LocaleLayout({
   const messages = await getMessages();
   const direction = locale === 'he' ? 'rtl' : 'ltr';
 
+  const settings = await getCachedSettings();
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID || settings.gtmId || null;
+
   return (
     <html lang={locale} dir={direction}>
       <head>
@@ -74,8 +79,10 @@ export default async function LocaleLayout({
           crossOrigin="anonymous"
         />
         <link href={GOOGLE_FONTS_URL} rel="stylesheet" />
+        <GtmHeadScript id={gtmId} />
       </head>
       <body>
+        <GtmNoScript id={gtmId} />
         <NextIntlClientProvider messages={messages}>
           <Header />
           <main id="main-content" className="min-h-screen">

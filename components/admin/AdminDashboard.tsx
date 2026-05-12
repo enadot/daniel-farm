@@ -27,6 +27,7 @@ export default function AdminDashboard({
 }: Props) {
   const router = useRouter();
   const [webhook, setWebhook] = useState(initialSettings.leadWebhookUrl ?? '');
+  const [gtmId, setGtmId] = useState(initialSettings.gtmId ?? '');
   const [savedAt, setSavedAt] = useState<number | null>(null);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
@@ -47,12 +48,23 @@ export default function AdminDashboard({
       const res = await fetch('/api/admin/settings', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ leadWebhookUrl: webhook.trim() }),
+        body: JSON.stringify({
+          leadWebhookUrl: webhook.trim(),
+          gtmId: gtmId.trim(),
+        }),
       });
       if (res.ok) {
         setSavedAt(Date.now());
+        router.refresh();
       } else {
-        setError('שמירה נכשלה');
+        const json = await res.json().catch(() => ({}));
+        if (json?.error === 'gtm_id_invalid_format') {
+          setError('GTM-ID לא תקין. צריך להיראות כמו GTM-XXXXXXX');
+        } else if (json?.error === 'webhook_must_start_with_http') {
+          setError('כתובת ה-webhook חייבת להתחיל ב-http(s)://');
+        } else {
+          setError('שמירה נכשלה');
+        }
       }
     } catch {
       setError('בעיה בחיבור לרשת');
@@ -140,31 +152,33 @@ export default function AdminDashboard({
         </section>
 
         <section
-          aria-labelledby="webhook-title"
+          aria-labelledby="settings-title"
           className="bg-white rounded-card shadow-soft p-6 md:p-8"
         >
-          <div className="mb-4">
+          <div className="mb-6">
             <h2
-              id="webhook-title"
+              id="settings-title"
               className="text-xl font-bold text-primary-dark mb-1"
             >
-              Webhook לקבלת לידים
+              הגדרות אתר
             </h2>
             <p className="text-sm text-text/70 leading-relaxed">
-              כל ליד שיישלח דרך טופס "שיחה חוזרת" יישלח גם ל-URL הזה. אפשר
-              לחבר ל-Zapier, Make, n8n, או כל מערכת לידים שמקבלת JSON ב-POST.
-              אם תשאיר ריק — הלידים יישמרו רק כאן.
+              שמירה כאן מעדכנת מיד את האתר החי (תוך כמה שניות בקאש).
             </p>
           </div>
 
-          <form onSubmit={onSave} className="space-y-4">
+          <form onSubmit={onSave} className="space-y-6">
             <div>
               <label
                 htmlFor="webhook-url"
-                className="block text-sm font-medium mb-2"
+                className="block text-sm font-semibold mb-1.5 text-primary-dark"
               >
-                כתובת ה-Webhook
+                Webhook ללידים
               </label>
+              <p className="text-xs text-text/65 mb-2 leading-relaxed">
+                כל ליד שיישלח דרך טופס "שיחה חוזרת" יועבר ל-URL הזה (Zapier,
+                Make, n8n, וכו'). הלידים נשמרים גם אם ה-webhook נופל.
+              </p>
               <input
                 id="webhook-url"
                 name="leadWebhookUrl"
@@ -173,6 +187,30 @@ export default function AdminDashboard({
                 value={webhook}
                 onChange={(e) => setWebhook(e.target.value)}
                 placeholder="https://hooks.zapier.com/hooks/catch/XXXX/YYYY"
+                className="w-full px-4 py-3 rounded-soft border border-primary-light bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition font-mono text-sm"
+              />
+            </div>
+
+            <div>
+              <label
+                htmlFor="gtm-id"
+                className="block text-sm font-semibold mb-1.5 text-primary-dark"
+              >
+                Google Tag Manager — GTM ID
+              </label>
+              <p className="text-xs text-text/65 mb-2 leading-relaxed">
+                מזהה GTM (מתחיל ב-<code className="font-mono">GTM-</code>) שיוטמע
+                אוטומטית בכל עמודי האתר. השאר ריק לכיבוי GTM.
+              </p>
+              <input
+                id="gtm-id"
+                name="gtmId"
+                type="text"
+                dir="ltr"
+                value={gtmId}
+                onChange={(e) => setGtmId(e.target.value.toUpperCase())}
+                placeholder="GTM-XXXXXXX"
+                pattern="GTM-[A-Z0-9]+"
                 className="w-full px-4 py-3 rounded-soft border border-primary-light bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition font-mono text-sm"
               />
             </div>
