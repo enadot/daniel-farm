@@ -46,11 +46,11 @@ export default function Header() {
       >
         {t('skipToContent')}
       </a>
-      <div className="w-full px-6 sm:px-8 lg:px-12 xl:px-16">
-        <div className="flex items-center justify-between h-20 gap-2">
+      <div className="w-full px-4 sm:px-6 lg:px-12 xl:px-16">
+        <div className="flex items-center justify-between h-20 gap-2 min-w-0">
           <Link
             href="/"
-            className="flex items-center flex-shrink-0"
+            className="flex items-center flex-shrink min-w-0"
             aria-label={t('homeAriaLabel')}
           >
             <img
@@ -58,7 +58,7 @@ export default function Header() {
               alt={tSite('fullName')}
               width={1983}
               height={254}
-              className="h-10 md:h-12 w-auto max-w-none object-contain"
+              className="h-8 sm:h-10 md:h-12 w-auto max-w-full object-contain"
             />
           </Link>
 
