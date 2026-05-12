@@ -1,20 +1,49 @@
 import type { Metadata } from 'next';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import PageHero from '@/components/PageHero';
 import ContactForm from '@/components/ContactForm';
+import RenderBuilderContent from '@/components/RenderBuilderContent';
+import { getBuilderPage } from '@/lib/builder';
 
-export const metadata: Metadata = {
-  title: 'צור קשר — חוות דניאל מנוחת החיות',
-  description:
-    'צרו קשר עם חוות דניאל. טלפון/ווטסאפ: 052-3288557. ממוקמים ליד תל השומר, גוש דן. ביקורים בתיאום טלפוני.',
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const t = await getTranslations({ locale, namespace: 'contact.meta' });
+  return { title: t('title'), description: t('description') };
+}
 
-export default function ContactPage() {
+export default async function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
+  const builderContent = await getBuilderPage('/contact', locale);
+  return <ContactPageBody builderContent={builderContent} locale={locale} />;
+}
+
+function ContactPageBody({
+  builderContent,
+  locale,
+}: {
+  builderContent: Awaited<ReturnType<typeof getBuilderPage>>;
+  locale: string;
+}) {
+  const t = useTranslations('contact');
+  const tCommon = useTranslations('common');
+  const tFooter = useTranslations('footer');
+
   return (
     <>
       <PageHero
         emoji="💬"
-        title="צרו קשר"
-        subtitle="אנו כאן עבורכם בכל שעה. הדרך המהירה ביותר היא בווטסאפ או בטלפון — נענה בהקדם, בסבלנות ובדיסקרטיות."
+        title={t('hero.title')}
+        subtitle={t('hero.subtitle')}
       />
 
       <section
@@ -23,7 +52,7 @@ export default function ContactPage() {
       >
         <div className="container-content">
           <h2 id="contact-options-title" className="sr-only">
-            דרכי יצירת קשר
+            {t('options.srTitle')}
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
             <a
@@ -31,7 +60,7 @@ export default function ContactPage() {
               target="_blank"
               rel="noopener noreferrer"
               className="card text-center hover:bg-[#25D366]/5 transition-colors group"
-              aria-label="שליחת ווטסאפ"
+              aria-label={tFooter('whatsappAria')}
             >
               <div
                 className="w-16 h-16 mx-auto rounded-full bg-[#25D366] text-white flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform"
@@ -40,18 +69,18 @@ export default function ContactPage() {
                 💬
               </div>
               <h3 className="text-xl font-bold text-primary-dark mb-2">
-                ווטסאפ
+                {t('options.whatsapp.title')}
               </h3>
-              <p className="text-text/80 mb-3">המהיר ביותר. נענה במהירות.</p>
+              <p className="text-text/80 mb-3">{t('options.whatsapp.desc')}</p>
               <span className="text-primary font-medium">
-                לחצו לשליחת הודעה
+                {t('options.whatsapp.cta')}
               </span>
             </a>
 
             <a
               href="tel:0523288557"
               className="card text-center hover:bg-primary-light/40 transition-colors group"
-              aria-label="התקשרו אלינו"
+              aria-label={tFooter('callAria')}
             >
               <div
                 className="w-16 h-16 mx-auto rounded-full bg-primary text-white flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform"
@@ -60,11 +89,11 @@ export default function ContactPage() {
                 📞
               </div>
               <h3 className="text-xl font-bold text-primary-dark mb-2">
-                טלפון
+                {t('options.phone.title')}
               </h3>
-              <p className="text-text/80 mb-3">דברו ישירות עם דניאל.</p>
+              <p className="text-text/80 mb-3">{t('options.phone.desc')}</p>
               <span className="text-primary font-medium" dir="ltr">
-                052-3288557
+                {tCommon('phone')}
               </span>
             </a>
 
@@ -76,61 +105,61 @@ export default function ContactPage() {
                 📍
               </div>
               <h3 className="text-xl font-bold text-primary-dark mb-2">
-                מיקום
+                {t('options.location.title')}
               </h3>
-              <p className="text-text/80 mb-3">ליד תל השומר, גוש דן</p>
+              <p className="text-text/80 mb-3">{t('options.location.desc')}</p>
               <span className="text-primary font-medium">
-                ביקורים בתיאום טלפוני
+                {t('options.location.note')}
               </span>
             </div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
             <div>
-              <h2 className="heading-md mb-3">שלחו לנו הודעה</h2>
+              <h2 className="heading-md mb-3">{t('form.title')}</h2>
               <p className="text-text/80 mb-6 leading-relaxed">
-                מעדיפים לכתוב? מלאו את הטופס ונחזור אליכם בהקדם. כל פנייה
-                נשמרת בדיסקרטיות מלאה.
+                {t('form.intro')}
               </p>
               <ContactForm />
             </div>
 
             <div>
-              <h2 className="heading-md mb-3">כיצד להגיע</h2>
+              <h2 className="heading-md mb-3">{t('directions.title')}</h2>
               <p className="text-text/80 mb-6 leading-relaxed">
-                החווה ממוקמת באזור תל השומר בגוש דן. הכתובת המדויקת תינתן
-                בתיאום הביקור. ניתן גם להזמין שירות הסעה במונית מהבית.
+                {t('directions.desc')}
               </p>
               <div
                 className="rounded-card overflow-hidden shadow-soft border border-primary-light/60"
-                aria-label="מפת מיקום החווה"
+                aria-label={t('directions.mapAria')}
               >
                 <iframe
-                  src="https://www.google.com/maps?q=Tel+Hashomer,+Israel&z=13&output=embed"
+                  src="https://www.google.com/maps?q=Moshav+Magshimim,+Israel&z=14&output=embed"
                   width="100%"
                   height="380"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="מפת אזור תל השומר — חוות דניאל"
+                  title={t('directions.mapTitle')}
                 />
               </div>
 
               <div className="card mt-6">
                 <h3 className="text-lg font-bold text-primary-dark mb-3 flex items-center gap-2">
                   <span aria-hidden="true">🕐</span>
-                  שעות פעילות
+                  {t('hours.title')}
                 </h3>
                 <ul className="space-y-2 text-text/80">
                   <li>
-                    <strong>מענה טלפוני:</strong> 24/7 — דניאל מתגורר בחווה
+                    <strong>{t('hours.phone')}</strong> {t('hours.phoneValue')}
                   </li>
                   <li>
-                    <strong>ביקורים בחווה:</strong> בתיאום טלפוני בלבד
+                    <strong>{t('hours.visits')}</strong>{' '}
+                    {t('hours.visitsValue')}
                   </li>
                   <li>
-                    <strong>שירותי הסעה:</strong> זמינים בתיאום מראש
+                    <strong>{t('hours.transport')}</strong>{' '}
+                    {t('hours.transportValue')}
                   </li>
                 </ul>
               </div>
@@ -138,6 +167,12 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      <RenderBuilderContent
+        content={builderContent}
+        model="page"
+        locale={locale}
+      />
     </>
   );
 }

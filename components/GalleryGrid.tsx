@@ -1,69 +1,64 @@
 'use client';
 
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 
-const placeholders = [
-  { title: 'חלקת עמודי שיש', emoji: '🏛️', tone: 'from-[#0a3a30] to-[#085041]' },
-  { title: 'חלקת פרחי משי', emoji: '🌸', tone: 'from-[#1D9E75] to-[#5DCAA5]' },
-  { title: 'חלקה מגוננת', emoji: '🌳', tone: 'from-[#085041] to-[#1D9E75]' },
-  { title: 'חלקת גדולי האומה', emoji: '⭐', tone: 'from-[#0a3a30] to-[#1D9E75]' },
-  { title: 'פינת מבקרים', emoji: '🌷', tone: 'from-[#1D9E75] to-[#085041]' },
-  { title: 'נוף החווה', emoji: '🍃', tone: 'from-[#5DCAA5] to-[#1D9E75]' },
-  { title: 'דרך הכניסה', emoji: '🛤️', tone: 'from-[#085041] to-[#5DCAA5]' },
-  { title: 'אזור הטקס', emoji: '🕯️', tone: 'from-[#0a3a30] to-[#1D9E75]' },
-  { title: 'גני זיכרון', emoji: '🌿', tone: 'from-[#1D9E75] to-[#085041]' },
-];
-
-const placeholderSvg = (label: string) =>
-  `data:image/svg+xml;utf8,${encodeURIComponent(
-    `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800'>
-      <defs>
-        <linearGradient id='g' x1='0' y1='0' x2='1' y2='1'>
-          <stop offset='0%' stop-color='%230a3a30'/>
-          <stop offset='100%' stop-color='%231D9E75'/>
-        </linearGradient>
-      </defs>
-      <rect width='1200' height='800' fill='url(%23g)'/>
-      <text x='600' y='420' font-family='sans-serif' font-size='48' fill='%23E1F5EE' text-anchor='middle' direction='rtl'>${label}</text>
-      <text x='600' y='480' font-family='sans-serif' font-size='28' fill='%23E1F5EE' opacity='0.8' text-anchor='middle' direction='rtl'>תמונה תועלה בקרוב</text>
-    </svg>`
-  )}`;
+const photoKeys = ['p1', 'p2', 'p3', 'p4', 'p5'] as const;
+const photoSources: Record<(typeof photoKeys)[number], string> = {
+  p1: '/images/gallery/photo-1.jpg',
+  p2: '/images/gallery/photo-2.jpg',
+  p3: '/images/gallery/photo-3.jpg',
+  p4: '/images/gallery/photo-4.jpg',
+  p5: '/images/gallery/photo-5.jpg',
+};
 
 export default function GalleryGrid() {
+  const t = useTranslations('gallery.photos');
+  const tCommon = useTranslations('common');
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
 
-  const slides = placeholders.map((p) => ({
-    src: placeholderSvg(p.title),
+  const photos = photoKeys.map((key) => ({
+    src: photoSources[key],
+    title: t(`${key}.title`),
+    description: t(`${key}.description`),
+  }));
+
+  const slides = photos.map((p) => ({
+    src: p.src,
     alt: p.title,
     title: p.title,
+    description: p.description,
   }));
 
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-        {placeholders.map((item, i) => (
+        {photos.map((item, i) => (
           <button
-            key={item.title}
+            key={item.src}
             type="button"
             onClick={() => {
               setIndex(i);
               setOpen(true);
             }}
-            className={`group relative aspect-[4/3] rounded-card overflow-hidden shadow-soft hover:shadow-soft-lg transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-primary/30 bg-gradient-to-br ${item.tone}`}
-            aria-label={`הגדל תמונה: ${item.title}`}
+            className="group relative aspect-[4/3] rounded-card overflow-hidden shadow-soft hover:shadow-soft-lg transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-4 focus:ring-primary/30 bg-primary-dark"
+            aria-label={tCommon('enlargeImage', { title: item.title })}
           >
-            <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
-              <span className="text-6xl md:text-7xl mb-3" aria-hidden="true">
-                {item.emoji}
-              </span>
-              <span className="text-lg md:text-xl font-bold text-center">
+            <img
+              src={item.src}
+              alt={item.title}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div
+              className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/75 via-black/40 to-transparent text-white"
+              aria-hidden="true"
+            >
+              <span className="text-lg md:text-xl font-bold drop-shadow">
                 {item.title}
-              </span>
-              <span className="text-sm text-primary-light/80 mt-1">
-                תמונה תועלה בקרוב
               </span>
             </div>
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
@@ -71,7 +66,7 @@ export default function GalleryGrid() {
                 className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/95 text-primary-dark px-4 py-2 rounded-soft font-medium"
                 aria-hidden="true"
               >
-                הצג תמונה
+                {tCommon('viewImage')}
               </span>
             </div>
           </button>

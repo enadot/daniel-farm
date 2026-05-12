@@ -18,7 +18,7 @@ const config: Config = {
         text: '#2C2C2A',
       },
       fontFamily: {
-        sans: ['var(--font-heebo)', 'system-ui', 'sans-serif'],
+        sans: ['Google Sans', 'Heebo', 'Inter', 'system-ui', 'sans-serif'],
       },
       borderRadius: {
         card: '12px',
